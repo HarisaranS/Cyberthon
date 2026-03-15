@@ -443,7 +443,7 @@ Stop conflicting services or change ports in `docker-compose.yml`.
 
 ## 📄 License
 
-Proprietary. © 2024 DataSentinel. All rights reserved.
+Proprietary. © 2026 DataSentinel. All rights reserved.
 
 ---
 
