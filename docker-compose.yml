@@ -1,0 +1,124 @@
+services:
+  mongodb:
+    image: mongo:7
+    container_name: datasentinel_mongo
+    restart: unless-stopped
+    ports:
+      - "27027:27017"
+    environment:
+      MONGO_INITDB_DATABASE: datasentinel
+    volumes:
+      - datasentinel_mongo:/data/db
+    networks:
+      - datasentinel-network
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/datasentinel --quiet
+      interval: 10s
+      timeout: 10s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: datasentinel_redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    command: redis-server --appendonly yes
+    volumes:
+      - datasentinel_redis:/data
+    networks:
+      - datasentinel-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  ai-engine:
+    build:
+      context: ./ai-engine
+      dockerfile: Dockerfile
+    container_name: datasentinel_ai
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - HOST=0.0.0.0
+      - PORT=8000
+      - LOG_LEVEL=info
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - GROQ_API_KEY=${GROQ_API_KEY}
+    networks:
+      - datasentinel-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: datasentinel_backend
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./backend/.env
+    depends_on:
+      mongodb:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      ai-engine:
+        condition: service_started
+    volumes:
+      - ./backend/src:/app/src
+      - backend_uploads:/app/uploads
+      - ./backend/.env:/app/.env:ro
+    networks:
+      - datasentinel-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: datasentinel_frontend
+    restart: unless-stopped
+    ports:
+      - "5173:5173"
+    env_file:
+      - ./frontend/.env
+    depends_on:
+      - backend
+    networks:
+      - datasentinel-network
+    volumes:
+      - /home/saran/Desktop/trace/frontend/src:/app/src
+      - /home/saran/Desktop/trace/frontend/.env:/app/.env:ro
+
+  nginx:
+    image: nginx:alpine
+    container_name: datasentinel_nginx
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - frontend
+      - backend
+      - ai-engine
+    networks:
+      - datasentinel-network
+
+volumes:
+  datasentinel_mongo:
+  datasentinel_redis:
+  backend_uploads:
+
+networks:
+  datasentinel-network:
+    driver: bridge

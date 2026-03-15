@@ -1,0 +1,2004 @@
+You are building DATASENTINEL — a complete, production-ready, hackathon-winning full-stack SaaS platform for Enterprise Personal Data Discovery, Classification, and DPDPA 2023 Compliance Intelligence. This is India's most comprehensive privacy compliance platform. Build every single file with full working code. Zero placeholders. Zero TODOs. Zero demo data. Zero mock data. Every feature must actually work end to end.
+
+═══════════════════════════════════════════════════════════════════════
+PART 1: PROJECT IDENTITY & COMPETITIVE POSITION
+═══════════════════════════════════════════════════════════════════════
+
+PRODUCT NAME: DataSentinel
+TAGLINE: Know Your Data. Own Your Compliance.
+SUBTITLE: India's First Natively DPDPA-Aligned Personal Data Intelligence Platform
+CATEGORY: RegTech / Privacy SaaS / Web Security
+TARGET USERS: Data Protection Officers, CISOs, Compliance Teams, IT Security Teams in Indian enterprises
+
+UNIQUE ANGLE: Every global tool (BigID, Varonis, Microsoft Purview) was built for GDPR. They don't understand Aadhaar, PAN, UPI, or data written in Tamil, Bengali, or Hindi. They cost ₹1–5 Crore/year. DataSentinel is built from the ground up for Indian law, Indian data, Indian languages, and Indian enterprise budgets.
+
+PROBLEM SOLVED: Organizations store personal data everywhere — mail servers, employee laptops, databases, backups, cloud drives, SaaS tools. Most companies don't know what personal data they hold, where it sits, or how exposed it is. Under the Digital Personal Data Protection Act, 2023 (DPDPA), organizations must identify, classify, and protect personal data. Manual audits don't scale. Spreadsheets won't solve this.
+
+PENALTIES ADDRESSED: DPDPA 2023 allows up to ₹250 Crore per violation. Ignorance is not a defense.
+
+LANGUAGE RULE: JavaScript only. Zero TypeScript. All files .js or .jsx exclusively.
+DATABASE RULE: MongoDB with Mongoose. Zero SQL databases.
+DATA RULE: Zero seed data. Zero demo data. Zero hardcoded fake data. All data comes from real user actions.
+
+═══════════════════════════════════════════════════════════════════════
+PART 2: COMPLETE TECH STACK — IMPLEMENT EVERY LIBRARY
+═══════════════════════════════════════════════════════════════════════
+
+FRONTEND (port 5173):
+- React 18 (plain JavaScript — zero TypeScript)
+- Vite
+- Tailwind CSS v3
+- Framer Motion (all page transitions and animations)
+- Recharts (all charts and graphs)
+- D3.js (data lineage graph visualization only)
+- Lucide React (all icons)
+- React Router v6
+- Zustand (global state management)
+- @tanstack/react-query (all server state and API fetching)
+- React Hook Form (all forms)
+- Zod (all form validation)
+- React Hot Toast (notifications)
+- date-fns (all date formatting)
+- axios (HTTP client with interceptors)
+- socket.io-client (real-time events)
+- i18next + react-i18next (English and Hindi minimum — 22 Indian language support structure)
+- EventSource API (SSE for DPO Co-Pilot streaming)
+
+BACKEND (port 3000):
+- Node.js 20 LTS + Express.js (plain JavaScript)
+- Mongoose (MongoDB ODM)
+- ioredis (Redis client)
+- Bull (job queue for scans and async tasks)
+- node-cron (scheduled tasks)
+- socket.io (WebSocket server)
+- jsonwebtoken (JWT access 15min + refresh tokens 7d)
+- bcryptjs (password hashing, rounds 12)
+- Passport.js with passport-google-oauth20 and passport-microsoft (OAuth2 SSO)
+- speakeasy (TOTP/MFA)
+- qrcode (MFA QR code generation)
+- crypto (AES-256-CBC field encryption for credentials)
+- helmet (security headers)
+- cors
+- express-rate-limit (rate limiting)
+- express-mongo-sanitize (NoSQL injection prevention)
+- hpp (HTTP parameter pollution)
+- multer (file uploads)
+- winston (structured logging)
+- express-validator (backend request validation)
+- pdfkit (PDF report generation)
+- nodemailer (transactional email)
+- axios (AI engine + external API calls)
+- mongoose-paginate-v2 (pagination)
+- uuid
+- dotenv
+
+AI ENGINE (port 8000) — Python FastAPI:
+- FastAPI + uvicorn
+- spaCy v3 with en_core_web_sm model (download via: python -m spacy download en_core_web_sm)
+- presidio-analyzer + presidio-anonymizer (Microsoft Presidio)
+- pytesseract + Pillow (OCR for images and PDFs)
+- pandas + numpy (data processing)
+- pydantic (request/response validation)
+- python-multipart (file uploads)
+- python-dotenv
+- httpx (async HTTP calls)
+
+DATABASE:
+- MongoDB 7 (primary — all collections via Mongoose)
+- Redis 7 (Bull queues, rate limiting, session cache, Socket.io pub/sub)
+- AWS S3 or local filesystem (generated PDF reports, uploaded documents)
+
+INFRASTRUCTURE:
+- Docker + Docker Compose (development and production)
+- Nginx (reverse proxy)
+- GitHub Actions CI/CD workflow files included
+
+═══════════════════════════════════════════════════════════════════════
+PART 3: COMPLETE FOLDER STRUCTURE — BUILD EVERY FILE
+═══════════════════════════════════════════════════════════════════════
+
+dataestential/
+├── .github/
+│   └── workflows/
+│       ├── ci.yml
+│       └── deploy.yml
+├── docker-compose.yml
+├── nginx/
+│   └── nginx.conf
+├── README.md
+├── frontend/
+│   ├── index.html
+│   ├── vite.config.js
+│   ├── tailwind.config.js
+│   ├── postcss.config.js
+│   ├── package.json
+│   ├── .env.example
+│   └── src/
+│       ├── main.jsx
+│       ├── App.jsx
+│       ├── index.css
+│       ├── i18n/
+│       │   ├── index.js
+│       │   ├── en.json
+│       │   └── hi.json
+│       ├── store/
+│       │   ├── authStore.js
+│       │   ├── scanStore.js
+│       │   ├── alertStore.js
+│       │   └── uiStore.js
+│       ├── hooks/
+│       │   ├── useAuth.js
+│       │   ├── useScans.js
+│       │   ├── useSocket.js
+│       │   ├── useDataSources.js
+│       │   ├── useCounter.js
+│       │   └── useSSE.js
+│       ├── lib/
+│       │   ├── axios.js
+│       │   ├── queryClient.js
+│       │   ├── utils.js
+│       │   └── validators.js
+│       ├── components/
+│       │   ├── layout/
+│       │   │   ├── PublicLayout.jsx
+│       │   │   ├── AppLayout.jsx
+│       │   │   ├── PortalLayout.jsx
+│       │   │   ├── Sidebar.jsx
+│       │   │   └── TopBar.jsx
+│       │   ├── ui/
+│       │   │   ├── StatCard.jsx
+│       │   │   ├── RiskBadge.jsx
+│       │   │   ├── DataTypeTag.jsx
+│       │   │   ├── ScanProgressBar.jsx
+│       │   │   ├── Modal.jsx
+│       │   │   ├── Drawer.jsx
+│       │   │   ├── Table.jsx
+│       │   │   ├── Pagination.jsx
+│       │   │   ├── Skeleton.jsx
+│       │   │   ├── Spinner.jsx
+│       │   │   ├── EmptyState.jsx
+│       │   │   ├── ConfirmDialog.jsx
+│       │   │   ├── Tooltip.jsx
+│       │   │   ├── Badge.jsx
+│       │   │   ├── Tabs.jsx
+│       │   │   ├── Accordion.jsx
+│       │   │   ├── StepWizard.jsx
+│       │   │   ├── CounterNumber.jsx
+│       │   │   └── ComplianceTag.jsx
+│       │   ├── charts/
+│       │   │   ├── RiskDonutChart.jsx
+│       │   │   ├── ScanTrendLine.jsx
+│       │   │   ├── DataTypeBar.jsx
+│       │   │   ├── ComplianceRadar.jsx
+│       │   │   ├── PIIBreakdown.jsx
+│       │   │   ├── RiskHeatmap.jsx
+│       │   │   └── LineageGraph.jsx
+│       │   ├── landing/
+│       │   │   ├── LandingNav.jsx
+│       │   │   ├── Hero.jsx
+│       │   │   ├── TrustBadges.jsx
+│       │   │   ├── ProblemStatement.jsx
+│       │   │   ├── HowItWorks.jsx
+│       │   │   ├── Features.jsx
+│       │   │   ├── PIIDemo.jsx
+│       │   │   ├── DPDPAMap.jsx
+│       │   │   ├── Pricing.jsx
+│       │   │   ├── Testimonials.jsx
+│       │   │   ├── FAQ.jsx
+│       │   │   ├── CTABanner.jsx
+│       │   │   └── LandingFooter.jsx
+│       │   ├── copilot/
+│       │   │   ├── CopilotChat.jsx
+│       │   │   ├── CopilotMessage.jsx
+│       │   │   └── CopilotInput.jsx
+│       │   └── portal/
+│       │       ├── PortalOTPForm.jsx
+│       │       └── DataRequestForm.jsx
+│       └── pages/
+│           ├── public/
+│           │   ├── Landing.jsx
+│           │   ├── FeaturesPage.jsx
+│           │   ├── PricingPage.jsx
+│           │   ├── About.jsx
+│           │   ├── Blog.jsx
+│           │   ├── BlogPost.jsx
+│           │   ├── Contact.jsx
+│           │   ├── Careers.jsx
+│           │   ├── Press.jsx
+│           │   ├── Security.jsx
+│           │   ├── DPDPAInfo.jsx
+│           │   ├── PrivacyPolicy.jsx
+│           │   ├── Terms.jsx
+│           │   ├── CookiePolicy.jsx
+│           │   └── NotFound.jsx
+│           ├── auth/
+│           │   ├── Login.jsx
+│           │   ├── Register.jsx
+│           │   ├── VerifyEmail.jsx
+│           │   ├── ForgotPassword.jsx
+│           │   ├── ResetPassword.jsx
+│           │   ├── MFASetup.jsx
+│           │   ├── MFAChallenge.jsx
+│           │   ├── SSOCallback.jsx
+│           │   └── AcceptInvite.jsx
+│           ├── app/
+│           │   ├── Dashboard.jsx
+│           │   ├── DataSources.jsx
+│           │   ├── Scans.jsx
+│           │   ├── ScanDetail.jsx
+│           │   ├── Inventory.jsx
+│           │   ├── InventoryDetail.jsx
+│           │   ├── Risk.jsx
+│           │   ├── Lineage.jsx
+│           │   ├── ThreatCenter.jsx
+│           │   ├── Reports.jsx
+│           │   ├── ReportDetail.jsx
+│           │   ├── DPDPACompliance.jsx
+│           │   ├── RoPA.jsx
+│           │   ├── DPIA.jsx
+│           │   ├── DPIADetail.jsx
+│           │   ├── Consent.jsx
+│           │   ├── RightsQueue.jsx
+│           │   ├── Breaches.jsx
+│           │   ├── BreachDetail.jsx
+│           │   ├── Alerts.jsx
+│           │   ├── AuditLog.jsx
+│           │   ├── Vendors.jsx
+│           │   ├── CrossBorder.jsx
+│           │   ├── ProcessingActivities.jsx
+│           │   ├── ChildrenData.jsx
+│           │   ├── Copilot.jsx
+│           │   ├── Policies.jsx
+│           │   ├── PenaltyMeter.jsx
+│           │   ├── Benchmarks.jsx
+│           │   ├── VernacularTest.jsx
+│           │   ├── ScanInsights.jsx
+│           │   ├── ModelPerformance.jsx
+│           │   ├── AIFeedback.jsx
+│           │   ├── SecurityAccessReview.jsx
+│           │   ├── SecurityThreats.jsx
+│           │   ├── EncryptionStatus.jsx
+│           │   ├── APIKeysPage.jsx
+│           │   ├── PentestLog.jsx
+│           │   ├── SettingsUsers.jsx
+│           │   ├── SettingsClassifiers.jsx
+│           │   ├── SettingsIntegrations.jsx
+│           │   ├── SettingsRetention.jsx
+│           │   ├── SettingsNotifications.jsx
+│           │   ├── SettingsBranding.jsx
+│           │   ├── SettingsBilling.jsx
+│           │   ├── Monitoring.jsx
+│           │   ├── Onboarding.jsx
+│           │   ├── Webhooks.jsx
+│           │   └── Profile.jsx
+│           └── portal/
+│               ├── PortalLanding.jsx
+│               ├── MyData.jsx
+│               ├── PortalRequest.jsx
+│               ├── Grievance.jsx
+│               ├── PortalConsent.jsx
+│               └── Nominee.jsx
+├── backend/
+│   ├── package.json
+│   ├── .env.example
+│   ├── server.js
+│   ├── app.js
+│   └── src/
+│       ├── config/
+│       │   ├── db.js
+│       │   ├── redis.js
+│       │   ├── logger.js
+│       │   ├── bullQueues.js
+│       │   ├── passport.js
+│       │   └── s3.js
+│       ├── models/
+│       │   ├── User.js
+│       │   ├── Organization.js
+│       │   ├── DataSource.js
+│       │   ├── ScanJob.js
+│       │   ├── ScanResult.js
+│       │   ├── DataAsset.js
+│       │   ├── PIIFinding.js
+│       │   ├── ConsentRecord.js
+│       │   ├── BreachEvent.js
+│       │   ├── RightsRequest.js
+│       │   ├── AuditLog.js
+│       │   ├── Report.js
+│       │   ├── DPIA.js
+│       │   ├── ProcessingActivity.js
+│       │   ├── Vendor.js
+│       │   ├── Policy.js
+│       │   ├── Alert.js
+│       │   ├── APIKey.js
+│       │   ├── Webhook.js
+│       │   ├── Subscription.js
+│       │   ├── MLFeedback.js
+│       │   ├── BlogPost.js
+│       │   └── ContactForm.js
+│       ├── controllers/
+│       │   ├── authController.js
+│       │   ├── dataSourceController.js
+│       │   ├── scanController.js
+│       │   ├── inventoryController.js
+│       │   ├── riskController.js
+│       │   ├── reportController.js
+│       │   ├── alertController.js
+│       │   ├── complianceController.js
+│       │   ├── ropaController.js
+│       │   ├── dpiaController.js
+│       │   ├── consentController.js
+│       │   ├── rightsController.js
+│       │   ├── breachController.js
+│       │   ├── auditController.js
+│       │   ├── teamController.js
+│       │   ├── billingController.js
+│       │   ├── apiKeyController.js
+│       │   ├── webhookController.js
+│       │   ├── vendorController.js
+│       │   ├── policyController.js
+│       │   ├── portalController.js
+│       │   ├── monitoringController.js
+│       │   ├── blogController.js
+│       │   └── contactController.js
+│       ├── routes/
+│       │   ├── index.js
+│       │   ├── auth.js
+│       │   ├── dataSources.js
+│       │   ├── scans.js
+│       │   ├── inventory.js
+│       │   ├── risk.js
+│       │   ├── reports.js
+│       │   ├── alerts.js
+│       │   ├── compliance.js
+│       │   ├── ropa.js
+│       │   ├── dpia.js
+│       │   ├── consent.js
+│       │   ├── rights.js
+│       │   ├── breach.js
+│       │   ├── audit.js
+│       │   ├── team.js
+│       │   ├── billing.js
+│       │   ├── apiKeys.js
+│       │   ├── webhooks.js
+│       │   ├── vendors.js
+│       │   ├── policies.js
+│       │   ├── portal.js
+│       │   ├── monitoring.js
+│       │   ├── ai.js
+│       │   ├── public.js
+│       │   ├── blog.js
+│       │   └── contact.js
+│       ├── middleware/
+│       │   ├── auth.js
+│       │   ├── rbac.js
+│       │   ├── errorHandler.js
+│       │   ├── validate.js
+│       │   ├── auditLogger.js
+│       │   └── rateLimiter.js
+│       ├── services/
+│       │   ├── scanService.js
+│       │   ├── aiService.js
+│       │   ├── riskScoringService.js
+│       │   ├── reportService.js
+│       │   ├── alertService.js
+│       │   ├── emailService.js
+│       │   ├── webhookService.js
+│       │   ├── schedulerService.js
+│       │   ├── socketService.js
+│       │   ├── encryptionService.js
+│       │   └── rightsFulfillmentService.js
+│       ├── workers/
+│       │   ├── scanWorker.js
+│       │   └── rightsWorker.js
+│       └── utils/
+│           ├── jwtUtils.js
+│           ├── responseUtils.js
+│           └── paginationUtils.js
+└── ai-engine/
+    ├── requirements.txt
+    ├── main.py
+    ├── .env.example
+    └── app/
+        ├── routers/
+        │   ├── detect.py
+        │   ├── classify.py
+        │   ├── ocr.py
+        │   ├── copilot.py
+        │   └── retrain.py
+        ├── services/
+        │   ├── pii_detector.py
+        │   ├── indian_pii_regex.py
+        │   ├── ner_service.py
+        │   ├── ocr_service.py
+        │   └── sensitivity_scorer.py
+        └── models/
+            └── schemas.py
+
+═══════════════════════════════════════════════════════════════════════
+PART 4: DESIGN SYSTEM — APPLY TO EVERY PAGE WITHOUT EXCEPTION
+═══════════════════════════════════════════════════════════════════════
+
+AESTHETIC: Dark industrial intelligence platform. Mission control meets legal compliance war room. Every screen feels like monitoring critical national infrastructure. Precise, technical, powerful, serious. Zero light mode. Zero purple gradients. Zero rounded bubbly elements. Zero generic AI-app aesthetic. Sharp edges with controlled glow accents.
+
+CSS VARIABLES — define in index.css, use everywhere:
+--bg: #07090F (page background)
+--s1: #0D1018 (surface 1)
+--s2: #111520 (surface 2)
+--s3: #161C2C (surface 3)
+--c1: #00E5FF (primary cyan — main accent, active states, buttons)
+--c2: #7C5FFF (purple — secondary accent, AI features)
+--c3: #FF4D6D (red — critical, danger, breach)
+--c4: #00FF9D (green — safe, success, resolved)
+--c5: #FFB020 (amber — warning, high risk)
+--c6: #FF6B35 (orange — medium risk)
+--c7: #E040FB (pink/magenta — special features)
+--c8: #40C4FF (light blue — info)
+--text: #C8D4F0 (primary text)
+--muted: #4A5570 (secondary text)
+--border: rgba(255,255,255,0.07) (default border)
+--bg-input: #0A0E18
+
+BACKGROUND TEXTURE on body:
+background: var(--bg);
+background-image:
+  linear-gradient(rgba(0,229,255,0.018) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(0,229,255,0.018) 1px, transparent 1px);
+background-size: 48px 48px;
+
+FONTS — load from Google Fonts in index.html:
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+- Syne (700, 800) — ALL headings h1 h2 h3, ALL stat numbers, logo
+- JetBrains Mono (400, 500, 600) — ALL data values, code, file paths, timestamps, labels, table headers, badges, tags, API endpoints, numbers
+- DM Sans (300, 400, 500) — ALL body text, descriptions, paragraphs, form labels
+
+TYPOGRAPHY RULES:
+Page title: Syne 28px 800, color var(--text)
+Section heading: Syne 20px 700, color var(--text)
+Card title: Syne 15px 700, color var(--text)
+Section label above heading: JetBrains Mono 10px uppercase letter-spacing 0.2em color var(--c1)
+Body text: DM Sans 14px 300, color var(--muted), line-height 1.7
+Large stat number: Syne 36-48px 800, colored per context
+Table header: JetBrains Mono 10px uppercase letter-spacing 0.12em, color var(--muted)
+Data value: JetBrains Mono 12px, color var(--text)
+File path: JetBrains Mono 11px, color var(--muted)
+Timestamp: JetBrains Mono 11px, color var(--muted)
+Badge/tag: JetBrains Mono 9-10px uppercase, colored background
+
+CARD COMPONENT RULES:
+Standard card: background var(--s1), padding 28px, position relative
+Card top color bar: 2px absolute top strip using CSS ::before, color varies by context (c1–c8)
+Card hover: background var(--s2), transition 200ms
+Grid layout: cards arranged in grids with 2px gap on var(--border) background, border-radius 16px on container (not individual cards), overflow hidden — creates unified panel effect
+Cards within grid: no individual border-radius, no shadow
+
+CARD GRID PATTERNS:
+.grid3 — 3 columns, 2px gap, var(--border) bg
+.grid4 — 4 columns, 2px gap
+.grid2 — 2 columns, 2px gap
+.grid-auto — auto-fill minmax(260px, 1fr)
+
+BUTTON STYLES:
+Primary: background var(--c1), color var(--bg), font JetBrains Mono 12px 600 uppercase letter-spacing 0.05em, padding 10px 22px, border-radius 6px, no border, hover brightness 110%
+Secondary: background transparent, color var(--c1), border 1px solid rgba(0,229,255,0.3), same font/padding, hover background rgba(0,229,255,0.08)
+Danger: background transparent, color var(--c3), border 1px solid rgba(255,77,109,0.3), hover background rgba(255,77,109,0.08)
+Ghost: background transparent, color var(--muted), no border, hover color var(--text)
+
+INPUT STYLES:
+background: var(--bg-input, #0A0E18)
+border: 1px solid var(--border)
+color: var(--text)
+font: DM Sans 14px
+border-radius: 6px
+padding: 10px 14px
+Focus: border-color var(--c1), box-shadow 0 0 0 3px rgba(0,229,255,0.1), outline none
+Placeholder: color var(--muted)
+
+RISK BADGE COMPONENT — exact styles for every severity:
+CRITICAL: bg rgba(255,77,109,0.1), color #FF4D6D, border 1px solid rgba(255,77,109,0.3), JetBrains Mono 9px uppercase bold, padding 3px 10px, border-radius 4px, animation: pulse 2s infinite (opacity 0.7 ↔ 1.0)
+HIGH: bg rgba(255,176,32,0.1), color #FFB020, border 1px solid rgba(255,176,32,0.3), same font/padding/radius
+MEDIUM: bg rgba(255,107,53,0.1), color #FF6B35, border rgba(255,107,53,0.3)
+LOW: bg rgba(0,255,157,0.1), color #00FF9D, border rgba(0,255,157,0.3)
+INFO: bg rgba(0,229,255,0.1), color #00E5FF, border rgba(0,229,255,0.3)
+
+DATA TYPE TAG COMPONENT — every PII type has its own color:
+AADHAAR → c1 (cyan)
+PAN → c5 (amber)
+MOBILE → c4 (green)
+EMAIL → c8 (light blue)
+HEALTH → c3 (red)
+FINANCIAL → c6 (orange)
+BIOMETRIC → c7 (pink)
+VOTER_ID → c2 (purple)
+PASSPORT → c2 (purple)
+DRIVING_LICENSE → c2 (purple)
+GSTIN → c5 (amber)
+UPI → c4 (green)
+NAME → c8 (light blue)
+ADDRESS → c1 dim
+Tag style: bg 10% opacity of type color, color type color, border 1px solid 25% opacity, JetBrains Mono 9px uppercase, padding 2px 8px, border-radius 3px
+
+STAT CARD COMPONENT:
+Outer: same card grid style with colored top bar
+Inner top: colored small tag badge showing category
+Number: Syne 40px 800, color matching accent (animate from 0 on mount — 1.5 second counter animation using requestAnimationFrame)
+Label: JetBrains Mono 9px uppercase letter-spacing 0.1em, color var(--muted)
+Trend indicator (optional): JetBrains Mono 10px colored arrow + percentage
+
+TABLE COMPONENT:
+Header: JetBrains Mono 10px uppercase letter-spacing 0.12em, color var(--muted), padding 12px 16px, border-bottom 1px solid var(--border), background var(--s1)
+Rows: DM Sans 13px, padding 13px 16px, border-bottom 1px solid rgba(255,255,255,0.04)
+Row hover: background var(--s2)
+Sticky header on scroll
+Empty state: centered, JetBrains Mono message + optional action button
+
+SIDEBAR (all app pages):
+Width: 240px expanded, 64px collapsed, transition 250ms ease
+Background: rgba(7,9,15,0.95) with backdrop-blur(20px), border-right 1px solid var(--border)
+Logo: "DataSentinel" in Syne 16px 800 color var(--c1), with pulsing dot before it
+Navigation sections labeled in JetBrains Mono 10px uppercase letter-spacing 0.15em color var(--muted)
+Nav items: JetBrains Mono 10px, padding 7px 16px, icon + label, color var(--muted), hover background rgba(0,229,255,0.06) color var(--c1)
+Active: background rgba(0,229,255,0.1), color var(--c1), ::before 2px absolute left bar cyan
+Collapsed: icons only centered, tooltip on hover
+Sidebar nav sections: OVERVIEW | DISCOVERY | RISK & COMPLIANCE | DPO WORKSPACE | AI ENGINE | SECURITY | PORTAL | SETTINGS & OPS
+Bottom: user initial circle + name Syne 13px + role JetBrains Mono 10px color var(--muted) + logout icon
+
+TOPBAR (all app pages):
+Height: 56px
+Background: rgba(7,9,15,0.92), backdrop-filter blur(20px), border-bottom 1px solid var(--border)
+Left: sidebar collapse toggle + breadcrumb in JetBrains Mono 11px color var(--muted) with / separator
+Center: global search 340px — JetBrains Mono placeholder "Search data assets, scans, reports..." — focus triggers command palette modal
+Right: language switcher (EN/HI) + socket status dot (c4 pulsing green if connected) + alerts bell with c3 red badge count + user avatar dropdown
+
+LOADING SKELETON:
+Shimmer animation: background linear-gradient 90deg from s1 through s2 back to s1, background-size 200% 100%, animation shimmer 1.5s infinite
+Every page has skeleton that exactly matches layout of real content
+
+PAGE TRANSITIONS (Framer Motion):
+All app pages: initial opacity 0 y 20px, animate opacity 1 y 0, duration 0.3 ease
+Cards within pages: stagger children 0.05s delay each using variants
+
+RECHARTS GLOBAL THEME:
+All chart backgrounds: transparent
+CartesianGrid: strokeDasharray 3 3, stroke var(--border)
+All axis ticks: JetBrains Mono 10px, fill var(--muted)
+Tooltip: contentStyle background s2, border 1px solid rgba(0,229,255,0.2), DM Sans 12px body, JetBrains Mono values
+Chart color sequence: ['#00E5FF','#FFB020','#FF4D6D','#00FF9D','#7C5FFF','#E040FB','#FF6B35','#40C4FF']
+All charts use ResponsiveContainer 100% width
+
+SCROLLBAR:
+::-webkit-scrollbar width 4px height 4px
+::-webkit-scrollbar-track background var(--bg)
+::-webkit-scrollbar-thumb background var(--muted) border-radius 2px
+
+3D DESIGN ELEMENTS:
+Landing hero: use CSS perspective transforms and box-shadow layering to create floating 3D card effects for demo screenshots
+Stat cards: subtle 3D lift on hover using transform: translateY(-4px) + layered box-shadow
+Dashboard: glassmorphism panels with backdrop-filter blur + border rgba on key sections
+Charts: area fills with gradient from accent color to transparent creating depth perception
+Risk score display: CSS 3D ring using conic-gradient with perspective transform
+All 3D effects purely CSS — no external 3D library needed
+
+═══════════════════════════════════════════════════════════════════════
+PART 5: MONGODB — ALL COLLECTIONS WITH COMPLETE SCHEMAS
+═══════════════════════════════════════════════════════════════════════
+
+COLLECTION: users
+Fields: _id, orgId, name, email, passwordHash (bcrypt pre-save hook rounds 12), role (enum: super_REDACTED_ADMIN_USER/REDACTED_ADMIN_USER/dpo/analyst/viewer/portal_user), isActive, isEmailVerified, emailVerificationToken, emailVerificationExpiry, passwordResetToken, passwordResetExpiry, mfaSecret (AES encrypted), isMfaEnabled, refreshTokens (array of hashed tokens), lastLogin, lastLoginIP, loginAttempts, lockUntil, ssoProvider, ssoId, createdAt, updatedAt
+Methods: comparePassword(), generateEmailVerificationToken(), generatePasswordResetToken()
+
+COLLECTION: organizations
+Fields: _id, name, industry, size (enum: 1-50/51-200/201-1000/1001-5000/5000+), gstin, registeredAddress, dataProtectionOfficer (name/email/phone), subscriptionPlan (enum: starter/professional/enterprise), subscriptionStatus, subscriptionExpiry, complianceScore (0-100), riskScore (0-100), totalPIIAssets, criticalCount, isSDF (Significant Data Fiduciary boolean), encryptionKey (per-org AES key), settings (object), branding (logo/colors), createdAt, updatedAt
+
+COLLECTION: data_sources
+Fields: _id, orgId, name, type (enum: mysql/postgresql/mongodb/mssql/s3/azure_blob/gcs/google_drive/onedrive/sharepoint/gmail/exchange/slack/teams/sftp/smb/rest_api), credentials (AES-256-CBC encrypted object), healthStatus (enum: healthy/error/unknown/scanning), lastHealthCheck, lastScannedAt, nextScheduledScan, schedule (cron expression), totalFilesScanned, totalPIIFound, riskScore, tags, isActive, createdBy, createdAt, updatedAt
+
+COLLECTION: scan_jobs
+Fields: _id, orgId, connectorId, name, status (enum: queued/running/completed/failed/cancelled), triggerType (enum: manual/scheduled), progress (0-100), currentFile (string), totalFilesScanned, totalPIIFound, criticalFindings, highFindings, mediumFindings, lowFindings, insightSummary (string), startedAt, completedAt, errorMessage, config (object), createdBy, createdAt
+
+COLLECTION: scan_results
+Fields: _id, scanJobId, orgId, dataSourceId, assetPath, assetType, fileName, fileSize, mimeType, detectedPII (array: {type, maskedValue, confidence, position, contextSnippet}), sensitivityLevel (enum: public/internal/personal/sensitive_personal), riskScore (0-100), ownerEmail, lastModified, isEncrypted, hasConsentRecord, remediationStatus (enum: pending/in_progress/resolved/accepted_risk), createdAt
+
+COLLECTION: data_assets
+Fields: _id, orgId, connectorId, path (AES encrypted), name, assetType, sensitivityLevel, riskScore, piiTypes (array), ownerEmail, department, lastSeenAt, firstDiscoveredAt, isEncrypted, retentionPolicy, consentStatus, exposureCount, isCrossBorder, destinationCountries, isChildrenData, remediationStatus, remediationHistory (array), tags, notes
+
+COLLECTION: pii_findings
+Fields: _id, orgId, scanId, connectorId, piiType (string), valueHash (SHA-256 of actual value — NEVER store plain PII), sourcePath (AES encrypted), sourceType (enum: file/database/email/cloud/api), language, confidence (0-1), sensitivityTier (1-5), riskScore (0-100), consentId (ObjectId or null), retentionExpiry (Date), principalId (AES encrypted hashed identifier), isChildrenData (boolean), lineNumber, contextSnippet (AES encrypted), isResolved, createdAt
+
+COLLECTION: consent_records
+Fields: _id, orgId, principalId (encrypted), principalEmail (encrypted), purposeDescription, dataTypes (array), legalBasis (enum: consent/legitimate_interest/legal_obligation/vital_interest), status (enum: active/expired/withdrawn), grantedAt, expiresAt, withdrawnAt, signatureHash, consentMethod, ipAddress, collectionPoint, createdAt
+
+COLLECTION: breach_events
+Fields: _id, orgId, title, description, severity (enum: critical/high/medium/low), status (enum: detected/investigating/contained/notified/closed), detectedAt, notifyDeadline (detectedAt + 72 hours), affectedDataTypes (array), estimatedAffectedCount, REDACTED_DB_PWDCause, containmentMeasures, dpbNotifiedAt, principalNotificationSentAt, timeline (array: {timestamp, event, user}), assignedTo, closedAt, createdAt
+
+COLLECTION: rights_requests
+Fields: _id, orgId, principalId (encrypted), principalEmail (encrypted), principalPhone (encrypted), requestType (enum: access/correction/erasure/grievance/nominee), status (enum: pending/verifying/processing/fulfilled/rejected), requestDetails (object), otpVerified (boolean), deadline (30 days from request), fulfillmentLog (array: {action, status, timestamp, error}), assignedTo, createdAt, updatedAt
+
+COLLECTION: audit_logs (IMMUTABLE — no update or delete routes ever)
+Fields: _id, orgId, userId, userEmail, userRole, action (string), resourceType, resourceId, details (object), ipAddress, userAgent, outcome (enum: success/failure), prevHash (SHA-256 of previous entry), entryHash (SHA-256 of this entry), timestamp
+
+COLLECTION: reports
+Fields: _id, orgId, type (enum: ropa/sensitive_data_audit/compliance_gap/breach_readiness/rights_fulfillment/executive_summary/dpia/annual_audit), title, generatedBy, status (enum: queued/generating/ready/failed), fileUrl (local path or S3 key), content (structured JSON), parameters, period, createdAt
+
+COLLECTION: dpias
+Fields: _id, orgId, title, processingDescription, processingPurpose, necessityAssessment, risks (array: {description, likelihood, severity, mitigationMeasures, residualRisk}), overallResidualRisk, dpoDraftedAt, dpoConsultationDate, dpoRecommendation, approvalStatus (enum: draft/under_review/approved/requires_update), approvedBy, nextReviewDate, createdBy, createdAt, updatedAt
+
+COLLECTION: processing_activities (RoPA)
+Fields: _id, orgId, activityName, dataCategories (array), purpose, legalBasis, dataPrincipalCategories, recipients (array), retentionPeriod, isCrossBorder, destinationCountries, safeguards, securityMeasures, isActive, dpiaId, lastReviewed, dpdpaSection, createdBy, createdAt, updatedAt
+
+COLLECTION: vendors
+Fields: _id, orgId, name, type (enum: processor/sub_processor/controller), contractStatus (enum: active/expired/pending/terminated), dataShared (array), processingPurpose, retentionPeriod, country, isDataProcessingAgreementSigned, lastAuditDate, riskScore, notes, createdAt, updatedAt
+
+COLLECTION: policies (auto-remediation rules)
+Fields: _id, orgId, name, description, trigger (object: {event, conditions}), actions (array: {type, params}), isActive, lastTriggered, triggerCount, createdBy, createdAt, updatedAt
+
+COLLECTION: api_keys
+Fields: _id, orgId, userId, name, keyHash (bcrypt), keyPrefix (first 8 chars visible), permissions (array), expiresAt, lastUsedAt, isActive, usageCount, createdAt
+
+COLLECTION: webhooks
+Fields: _id, orgId, url, events (array), secret, isActive, failureCount, lastDeliveryAt, lastDeliveryStatus, createdBy, createdAt
+
+COLLECTION: ml_feedback
+Fields: _id, orgId, findingId, originalPrediction (object), correctedLabel (string), feedbackType (enum: false_positive/false_negative/wrong_type/wrong_tier), analystId, notes, isProcessed, createdAt
+
+COLLECTION: blog_posts
+Fields: _id, title, slug, excerpt, content (HTML), author (name/role/avatar), category, tags, isPublished, publishedAt, readTimeMinutes, viewCount, createdAt, updatedAt
+
+COLLECTION: subscriptions
+Fields: _id, orgId, plan, status, currentPeriodStart, currentPeriodEnd, dataSourceLimit, scanLimit, usersLimit, assetsLimit, createdAt, updatedAt
+
+═══════════════════════════════════════════════════════════════════════
+PART 6: ALL API ENDPOINTS — IMPLEMENT EVERY SINGLE ONE
+═══════════════════════════════════════════════════════════════════════
+
+AUTH /api/v1/auth/:
+POST /register — create org + REDACTED_ADMIN_USER user, send verification email
+POST /login — email/password, return JWT access token, set refresh httpOnly cookie, handle MFA check
+POST /logout — clear refresh cookie, invalidate refresh token
+POST /refresh — rotate refresh token, return new access token
+GET /me — current user + org details
+PATCH /me — update profile
+PATCH /password — change password (requires current password)
+POST /forgot-password — send reset email
+POST /reset-password/:token — validate token, update password
+GET /verify-email/:token — verify email, activate account
+POST /resend-verification — resend verification email
+POST /accept-invite/:token — accept team invitation, set password
+POST /mfa/setup — generate speakeasy secret, return QR data URL
+POST /mfa/verify — verify TOTP code, enable MFA
+POST /mfa/disable — disable MFA (requires password confirm)
+POST /mfa/challenge — verify TOTP during login flow
+GET /oauth/google — Passport.js Google OAuth2
+GET /oauth/google/callback — handle callback, issue JWT
+GET /oauth/microsoft — Passport.js Microsoft OAuth2
+GET /oauth/microsoft/callback — handle callback, issue JWT
+GET /sessions — list active sessions
+DELETE /sessions/:id — revoke specific session
+
+DATA SOURCES /api/v1/sources/:
+GET / — list all with health + risk
+POST / — create new connector (encrypt credentials with AES-256-CBC)
+GET /:id — single connector with scan history
+PATCH /:id — update (re-encrypt credentials)
+DELETE /:id — remove connector
+POST /:id/test — test connection (attempt real connection)
+POST /:id/scan — add Bull job to scan queue
+GET /:id/assets — assets discovered from this source
+GET /:id/history — scan job history for this source
+PATCH /:id/schedule — update cron schedule
+
+SCANS /api/v1/scans/:
+GET / — paginated list with filters (status/source/date/severity)
+GET /active — currently running scans
+GET /stats — aggregate stats (30-day trend)
+GET /:id — single scan job details
+GET /:id/results — paginated scan results/findings for this scan
+POST /:id/cancel — cancel running scan (Bull job cancel)
+DELETE /:id — remove scan record
+
+INVENTORY /api/v1/inventory/:
+GET / — paginated assets with complex filters (type/sensitivity/source/dept/owner/date/encryption/consent/remediation)
+GET /stats — breakdown by sensitivity/type/source
+GET /search — full-text search on assets
+GET /:id — full asset detail
+PATCH /:id — update remediation status/notes/owner
+DELETE /:id — mark for deletion
+POST /bulk — bulk action (export/assign/status-change/delete)
+GET /export — CSV export of filtered inventory
+
+RISK /api/v1/risk/:
+GET /dashboard — org risk score + trend + breakdown
+GET /score — current org-wide risk score
+GET /trend — 30/60/90 day risk trend
+GET /breakdown — by source/type/dept
+GET /assets — assets sorted by risk score
+GET /recommendations — prioritized remediation list
+GET /heatmap — matrix data for risk heatmap
+
+REPORTS /api/v1/reports/:
+GET / — list generated reports
+POST /generate — queue Bull job to generate report (async)
+GET /:id — report with full content JSON
+GET /:id/download — download PDF (signed URL or file stream)
+DELETE /:id — delete report + file
+
+ALERTS /api/v1/alerts/:
+GET / — paginated alerts with filters
+GET /unread-count — count for topbar badge
+GET /stats — alert statistics
+GET /:id — single alert
+PATCH /:id/read — mark read
+PATCH /:id/resolve — mark resolved
+PATCH /:id/assign — assign to user
+POST /bulk-read — mark multiple read
+GET /rules — list notification rules
+POST /rules — create rule
+PATCH /rules/:id — update rule
+DELETE /rules/:id — delete rule
+
+COMPLIANCE /api/v1/compliance/:
+GET /score — DPDPA compliance score per chapter
+GET /checklist — full DPDPA checklist with evidence
+PATCH /checklist/:itemId — update evidence for checklist item
+GET /gaps — list of non-compliant items
+POST /assess — trigger compliance reassessment
+
+ROPA /api/v1/ropa/:
+GET / — list all processing activities
+POST / — create new RoPA entry
+GET /:id — single entry
+PATCH /:id — update
+DELETE /:id — delete
+GET /export — generate PDF RoPA document
+
+DPIA /api/v1/dpia/:
+GET / — list DPIAs
+POST / — create new DPIA
+GET /:id — full DPIA
+PATCH /:id — update sections
+PATCH /:id/approve — DPO approves
+GET /:id/export — generate PDF
+
+CONSENT /api/v1/consent/:
+GET / — paginated consent records
+POST / — create consent record
+GET /:id — single record
+PATCH /:id — update
+PATCH /:id/withdraw — process withdrawal
+GET /stats — active/expired/withdrawn counts
+GET /gaps — pii_findings with null consentId
+POST /bulk-import — CSV import of consent records
+
+BREACH /api/v1/breach/:
+GET / — breach register
+POST / — log new breach, calculate 72hr deadline
+GET /:id — full breach detail
+PATCH /:id — update breach details
+POST /:id/notify-dpb — mark DPB notified, record timestamp
+POST /:id/notify-principals — mark principals notified
+POST /:id/timeline — add event to timeline
+POST /:id/close — close breach, prompt post-incident review
+GET /stats — total/active/resolved counts
+
+RIGHTS /api/v1/rights/:
+GET / — all requests paginated
+POST / — log new rights request, send OTP (nodemailer or SMS placeholder)
+GET /:id — full request with fulfillment log
+PATCH /:id/status — update status
+POST /:id/fulfill — trigger rightsFulfillmentService
+GET /stats — counts by status/type + SLA metrics
+GET /sla-violations — requests that breached 30-day SLA
+
+VENDORS /api/v1/vendors/:
+GET / — vendor list with risk scores
+POST / — add vendor/processor
+GET /:id — vendor detail
+PATCH /:id — update
+DELETE /:id — remove
+
+POLICIES /api/v1/policies/:
+GET / — list auto-remediation policies
+POST / — create policy rule
+GET /:id — single policy
+PATCH /:id — update
+DELETE /:id — delete
+PATCH /:id/toggle — enable/disable
+
+AUDIT /api/v1/audit/:
+GET / — paginated immutable log with filters
+GET /verify — verify hash chain integrity
+GET /export — export to CSV
+
+AI ROUTES /api/v1/ai/:
+POST /detect — proxy to AI engine detect endpoint
+POST /classify — proxy to classify endpoint
+POST /ocr — proxy file upload to OCR endpoint
+GET /copilot/stream — SSE stream for DPO Co-Pilot (query param: q)
+POST /feedback — save ML feedback to ml_feedback collection
+POST /vernacular-test — test detection on text in specific language
+
+TEAM /api/v1/team/:
+GET /members — list users in org
+POST /invite — send invite email with token
+PATCH /members/:id/role — change role
+PATCH /members/:id/status — activate/deactivate
+DELETE /members/:id — remove
+GET /invitations — pending invites
+DELETE /invitations/:id — revoke invite
+
+BILLING /api/v1/billing/:
+GET /subscription — current plan + usage
+GET /invoices — billing history
+PATCH /plan — upgrade/downgrade plan
+
+API KEYS /api/v1/api-keys/:
+GET / — list API keys
+POST / — create key (store bcrypt hash, return full key once only)
+PATCH /:id — update name/permissions
+DELETE /:id — revoke key
+
+WEBHOOKS /api/v1/webhooks/:
+GET / — list webhooks
+POST / — create webhook
+PATCH /:id — update
+DELETE /:id — delete
+POST /:id/test — send test delivery
+GET /:id/deliveries — delivery log
+
+PORTAL /api/v1/portal/ (OTP-based auth — no JWT required):
+POST /request-otp — send OTP to principal's phone/email
+POST /verify-otp — verify OTP, return short-lived portal token
+GET /my-data — (portal token auth) fetch all data held on this principal
+POST /request — submit rights request
+POST /grievance — file grievance
+PATCH /consent/:id/withdraw — withdraw specific consent
+POST /nominee — register nominee
+
+PUBLIC /api/v1/public/ (no auth):
+POST /detect — live PII detection demo (calls AI engine, rate limited 5/hour per IP)
+POST /waitlist — email capture
+GET /blog — blog posts
+GET /blog/:slug — single post
+POST /contact — contact form
+
+MONITORING /api/v1/monitoring/:
+GET /health — service health (DB, Redis, AI engine)
+GET /metrics — request counts, error rates, queue depths
+GET /queues — Bull queue status
+
+SETTINGS /api/v1/settings/:
+GET / — all org settings
+PATCH /general — update org profile
+PATCH /security — password policy, session timeout
+PATCH /classifiers — custom PII patterns
+PATCH /retention — retention policy rules
+PATCH /notifications — notification routing
+PATCH /branding — logo + colors
+PATCH /integrations — Slack/Jira/SIEM webhook URLs
+GET /export — export all org data
+
+═══════════════════════════════════════════════════════════════════════
+PART 7: ALL APP PAGES — COMPLETE UI DESCRIPTION
+═══════════════════════════════════════════════════════════════════════
+
+ALL APP PAGES share: AppLayout (Sidebar + TopBar), Framer Motion page transition (opacity 0→1, y 20→0, 0.3s), skeleton loading state, empty state component, React Query for all data fetching, real API calls — no hardcoded data.
+
+─────────────────────────────────────
+DASHBOARD (/dashboard)
+─────────────────────────────────────
+Page title "Dashboard" + "Run Scan" primary button right + "Last updated [time]" text
+
+ROW 1 — Stat cards grid4:
+Card 1: Total PII Assets — c1 top bar, Syne 40px animated counter, trend vs last week
+Card 2: Critical Risk Items — c3 top bar, counter, pulsing red CSS animation on card
+Card 3: Compliance Score — c4 top bar, percentage number + % symbol
+Card 4: Active Scans — c5 top bar, counter, pulsing amber dot if > 0
+
+ROW 2 — grid2:
+Left: Risk Distribution Donut (Recharts) — 4 slices per severity, center label total, legend with counts
+Right: Scan Activity Line Chart — 30 days, dual lines (scans + PII found), gradient area fill
+
+ROW 3 — grid2:
+Left 55%: Top Risky Sources table — source icon + name, asset count, risk score bar + number, last scan relative time, status badge — clickable → /sources
+Right 45%: Recent Alerts feed — severity colored dot + title DM Sans 13px + time ago JetBrains Mono — max 8 items — "View all" link
+
+ROW 4: Live Scan Feed — full width card, pulsing green dot "LIVE" badge, scrollable 200px height, auto-scroll bottom, each item: timestamp + file path JetBrains Mono + DataTypeTag components for detected types. Socket.io scan:finding events update this in real time.
+
+ROW 5: DPDPA Compliance Gauge — mini scorecard showing per-section scores: Consent / Rights / Obligations / Technical — each as small bar with score/100.
+
+─────────────────────────────────────
+DATA SOURCES (/sources)
+─────────────────────────────────────
+Grid-auto layout of source cards. Each card:
+- Type icon colored + name Syne 14px + health status badge
+- Last scan + asset count + risk score mini ring
+- Schedule indicator (cron human-readable)
+- Actions row: Scan Now / Edit / View Assets / Delete
+
+Connector wizard modal (3 steps with StepWizard):
+Step 1: Select type from visual icon grid — 20+ types: AWS S3, Azure Blob, GCS, Google Drive, OneDrive, SharePoint, Dropbox, MySQL, PostgreSQL, MongoDB, MSSQL, Exchange, Gmail, Slack, Teams, Salesforce, SFTP, REST API, Local Files
+Step 2: Dynamic form fields per type with AES-256-CBC encryption note
+Step 3: "Test Connection" real API call → success/error → Save
+
+─────────────────────────────────────
+SCANS (/scans)
+─────────────────────────────────────
+Active scans section (if running) — socket.io progress bars, current file path, ETA, Cancel button.
+
+History table: Scan name | Source icon+name | Status badge | Duration JetBrains Mono | Files Scanned | PII Found (amber if >0) | Critical count (red badge if >0) | Started JetBrains Mono | Triggered by | Actions.
+
+"New Scan" modal: Select source → Configure (full/incremental, file types, size limit, notify on complete) → Confirm.
+
+─────────────────────────────────────
+SCAN DETAIL (/scans/:id)
+─────────────────────────────────────
+Header: name + status + progress bar if running + Export CSV + Cancel if running.
+Metadata row: source | started | completed | duration | trigger type | files | findings.
+4 stat cards: Files Scanned | PII Detections | Critical | Languages Detected.
+
+Findings table: File Path JetBrains Mono | Detected PII DataTypeTags | Sensitivity RiskBadge | Confidence % | Risk Score | Owner | Remediation status dropdown (saves inline) | Actions.
+
+─────────────────────────────────────
+INVENTORY (/inventory)
+─────────────────────────────────────
+Stats bar: 5 counts colored by severity — Total | Critical | High | Medium | Low.
+
+Advanced filter panel (collapsible): Search, Sensitivity multi-select, PII Type multi-select, Data Source, Date range, Encrypted toggle, Consent status, Remediation status, Children's Data toggle, Cross-border toggle. Filter count badge when active.
+
+Table columns: checkbox | Asset Name JetBrains Mono | Source | Sensitivity RiskBadge | PII Types DataTypeTags max 3 + "+X" | Risk Score bar+number | Owner | Last Seen | Encrypted lock icon | Consent check/x | Children Data icon if true | Remediation status | Actions
+
+Bulk actions bar when rows selected: Export / Assign Owner / Change Status / Delete.
+
+─────────────────────────────────────
+INVENTORY DETAIL (/inventory/:id)
+─────────────────────────────────────
+Two columns 65% + 35%.
+
+LEFT: Metadata card (path/source/type/size/last modified), Detected PII card (each instance: DataTypeTag + masked value + confidence badge + line number + expandable context snippet with PII replaced by colored placeholder), Access & Security card (encryption + exposure count + retention + consent), Remediation History timeline, Notes card.
+
+RIGHT: Risk Score Syne 52px colored + breakdown accordion, Consent Record mini-card, Related Assets list max 5, Action buttons (Request Deletion / Assign Owner / Flag / Export), Children's Data flag if applicable.
+
+─────────────────────────────────────
+RISK (/risk)
+─────────────────────────────────────
+Risk score banner: Syne 72px colored + risk level label + trend + circular ring + "Reassess Now" button.
+
+Charts: Risk by PII Type horizontal bar | Risk by Source radar | Risk Trend 30 days area | Risk Heatmap (grid: sources vs PII types, color intensity = risk score).
+
+Top 10 Riskiest Assets table with inline risk bars.
+Risk Factor accordion: Unencrypted / Excessive Access / No Consent / Retention Violation / Orphaned Data / Cross-border Unprotected.
+Recommendations list sorted by impact.
+
+─────────────────────────────────────
+LINEAGE (/lineage)
+─────────────────────────────────────
+Full-page D3.js force-directed graph. Nodes: data sources (squares), data assets (circles), data principals (person icon), vendors (building icon). Edges colored by sensitivity. Node size = asset count. Click node → info panel right side. Filters: source type, sensitivity level, show/hide principals and vendors. Legend. Zoom/pan/reset controls.
+
+─────────────────────────────────────
+THREAT CENTER (/threats)
+─────────────────────────────────────
+Active threats list with severity, type icon, title, description, affected asset, detection time. Threat types: unauthorized access, anomalous export, new sensitive data without consent, encryption removed, public access granted. Alert rules configuration. Threat history table.
+
+─────────────────────────────────────
+CONSENT (/consent)
+─────────────────────────────────────
+Stats: Total | Active | Expiring 30 days | Withdrawn | No Consent Gap count (critical).
+
+Consent Gap Alert: "X PII findings have no linked consent — DPDPA §6 violation risk" with "View unlinked" button.
+
+Table: Principal (masked email) | Data Types tags | Purpose | Legal Basis | Granted | Expires | Status | Actions.
+
+"Add Consent" modal + "Import CSV" bulk import.
+
+─────────────────────────────────────
+BREACHES (/breaches) and BREACH DETAIL (/breach/:id)
+─────────────────────────────────────
+72-hour countdown timer banner if active breach — colored red when < 12 hours.
+
+Breach cards: severity badge | title | status | discovered date | affected data types | estimated affected count | "DPB notified ✓" green or "X hours remaining ⚠" amber/red.
+
+Breach detail: full metadata, 72hr countdown (large, prominent), notification status buttons, Timeline accordion, Post-incident review form (after close).
+
+─────────────────────────────────────
+RIGHTS QUEUE (/rights-queue)
+─────────────────────────────────────
+Kanban board 4 columns: Received | Verifying | Processing | Fulfilled.
+
+Each request card: request type badge (ACCESS/CORRECTION/ERASURE/GRIEVANCE/NOMINEE) + principal masked email + received date + SLA countdown (red if overdue) + assigned to.
+
+Click card → drawer: full details, OTP verification status, all data found for this principal, fulfillment log, response templates, "Fulfill" button.
+
+─────────────────────────────────────
+REPORTS (/reports)
+─────────────────────────────────────
+Report type cards grid3: RoPA | Sensitive Data Audit | Compliance Gap | Breach Readiness | Rights Fulfillment | Executive Summary | DPIA | Annual Audit.
+
+Each card: colored top bar + icon + name + description + last generated + "Generate" button.
+
+Generate modal: title | date range | scope | format (PDF) | include charts toggle. Async generation via Bull job.
+
+Generated reports table: name | type badge | status (Generating spinner / Ready / Failed) | date | size | Download | View | Delete.
+
+─────────────────────────────────────
+DPDPA COMPLIANCE (/compliance)
+─────────────────────────────────────
+Compliance score gauge (circular, 200px, 0-100). Score label (CRITICAL/AT RISK/MODERATE/COMPLIANT). Last assessed. "Reassess Now" button.
+
+Four pillar mini-scores: Consent Management | Rights | Obligations | Technical.
+
+Compliance Checklist organized by DPDPA chapter as accordions. Each item: status icon (✓/⚠/✗/—) + requirement + evidence notes + last checked + "Add Evidence" button.
+
+Compliance Gaps table: Gap | Severity | Affected Assets | Recommended Action | Effort | Due Date | Status.
+
+─────────────────────────────────────
+ROPA (/ropa)
+─────────────────────────────────────
+RoPA table with full CRUD. Columns: Activity Name | Data Categories | Purpose | Legal Basis | Data Principal Categories | Recipients | Retention | Cross-border | Security Measures | Last Reviewed | Actions.
+
+"Add Activity" form modal. Export PDF + Export Excel buttons.
+
+─────────────────────────────────────
+DPIA (/dpia) and DPIA DETAIL (/dpia/:id)
+─────────────────────────────────────
+List of DPIAs as cards: title | status badge | risk level | DPO consulted | next review | View/Edit buttons.
+
+DPIA detail page section-by-section: Processing Description | Necessity Assessment | Risk Table (add/edit rows with likelihood + severity + calculated level) | Mitigation Measures | Residual Risk selector | DPO Consultation | Approval section.
+
+Read-only for non-DPO. DPO can edit and approve. Export to PDF.
+
+─────────────────────────────────────
+VENDORS (/vendors)
+─────────────────────────────────────
+Vendor/data processor registry. Table: name | type badge (Processor/Sub-processor/Controller) | country | data shared types | DPA signed (green check / red x) | contract status | last audit | risk score | actions.
+
+"Add Vendor" modal. "Data Processing Agreement Required" warnings for unsigned vendors.
+
+─────────────────────────────────────
+CROSS-BORDER (/cross-border)
+─────────────────────────────────────
+Table of detected cross-border transfers: source system | data types | destination country | volume estimate | status (Blocked/Monitored/Approved) | safeguards | actions (Block / Approve / Request Safeguards).
+
+SDF notice if org is flagged as Significant Data Fiduciary.
+
+─────────────────────────────────────
+PROCESSING ACTIVITIES (/processing-activities)
+─────────────────────────────────────
+Full RoPA CRUD table. Link to DPIA for each activity. Export PDF of complete RoPA. "Suggest Activities Based on Inventory" button.
+
+─────────────────────────────────────
+CHILDREN DATA (/children-data)
+─────────────────────────────────────
+Stats: Total child data records | Sources containing child data | Consent with parental verification | No parental consent (critical red).
+
+Table of all findings where isChildrenData=true. DPDPA §9 compliance checklist. Alert if parental consent cannot be verified.
+
+─────────────────────────────────────
+COPILOT (/copilot) — DPO AI ASSISTANT
+─────────────────────────────────────
+Full-page AI chat. Left panel 30%: chat history, new chat button, suggested queries (EN + HI), language toggle.
+
+Right panel 70%: active chat. User messages right-aligned bg-s3. Assistant messages left-aligned bg-s2 with markdown rendering + SSE streaming. Each message: text + DPDPA section citations + "Copy" button.
+
+Input: textarea + Send button + language selector.
+
+Query suggestions (clickable chips): "Show all Aadhaar data without consent" | "Current DPDPA compliance score?" | "Breaches in last 90 days" | "How does §8 apply to our HR database?"
+
+Implementation: GET /api/v1/ai/copilot/stream?q=... → backend receives query → fetches org stats from MongoDB → composes context → streams AI response via SSE → frontend EventSource reads tokens.
+
+─────────────────────────────────────
+POLICIES (/policies)
+─────────────────────────────────────
+Auto-remediation policy builder. Policy list with status toggles.
+
+"Create Policy" form:
+- Policy Name + Description
+- Trigger: event type (pii_found/retention_expired/consent_withdrawn/scan_complete) + conditions (sensitivity >= HIGH, data_type == AADHAAR, source_type == cloud)
+- Actions (multiple): send alert / block access / create webhook notification / quarantine
+- Save + Enable toggle
+
+─────────────────────────────────────
+PENALTY METER (/penalty-meter)
+─────────────────────────────────────
+"Estimated Penalty Exposure" — calculated rupee amount Syne 52px red. "Up to ₹250 Crore maximum per violation."
+
+Penalty breakdown table: DPDPA Section | Violation Type | Current Status | Max Penalty | Your Exposure | Contribution.
+
+Calculated from unresolved compliance gaps × severity weight × org size multiplier.
+
+"Fix These Issues" CTA buttons linking to relevant pages.
+
+─────────────────────────────────────
+BENCHMARKS (/benchmarks)
+─────────────────────────────────────
+Compliance benchmarking. Org score vs industry average vs top performers (anonymized).
+
+Radar chart: org compliance vs industry median across DPDPA sections.
+Percentile ranking text.
+Top areas where org exceeds or falls short of benchmark.
+Compliance score trend vs industry trend.
+
+─────────────────────────────────────
+VERNACULAR TEST (/ai/vernacular-test)
+─────────────────────────────────────
+Language selector (22 Indian languages). Input textarea. "Detect PII" → POST /api/v1/ai/vernacular-test with language hint.
+
+Results: highlighted text with colored PII overlays. Detection table: type + masked value + confidence + character position.
+
+─────────────────────────────────────
+SCAN INSIGHTS (/ai/scan-insights)
+─────────────────────────────────────
+Scan selector dropdown. AI Summary card in plain English (or Hindi toggle). Key findings. Top 3 priorities. Comparison to previous scan diff. Trend panel: PII distribution change over last 5 scans.
+
+─────────────────────────────────────
+MODEL PERFORMANCE (/ai/model-performance)
+─────────────────────────────────────
+Metrics cards: Overall Precision | Recall | F1 Score | False Positive Rate.
+Per-PII-type accuracy table: PII type | Precision | Recall | F1 | Sample Count.
+Model version history table.
+
+─────────────────────────────────────
+AI FEEDBACK (/ai/feedback)
+─────────────────────────────────────
+Findings needing review (low confidence < 0.7 first). Table: Original Text (masked) | Predicted Type | Predicted Confidence | Language | "Correct Type" dropdown | "Is False Positive" toggle | Notes | Submit.
+
+Stats: Total feedback submitted | False positives corrected | False negatives added.
+
+─────────────────────────────────────
+SECURITY PAGES (/security/*)
+─────────────────────────────────────
+
+ACCESS REVIEW: Table of users × data sources access matrix. Overprivileged users alerts. "Revoke Access" buttons.
+
+THREATS: Active threats from breach events + anomaly + policy violations. Each: severity | type | description | affected asset | detected time | "Investigate" button.
+
+ENCRYPTION STATUS: Per-source encryption coverage table: encrypted-at-rest | credentials-encrypted | transport-encrypted. Overall coverage %.
+
+API KEYS (/security/api-keys): API key management, create/revoke, permissions scopes, expiry. Full key shown only once on creation.
+
+PENTEST LOG: Penetration testing vulnerability register. Table: date | tester | scope | severity | vulnerability | status | resolution date. "Add Entry" form (REDACTED_ADMIN_USER only).
+
+─────────────────────────────────────
+DATA PRINCIPAL PORTAL (/portal/*)
+─────────────────────────────────────
+
+PORTAL LANDING: Public-facing mobile-first. "Your Data. Your Rights." Enter phone number → OTP sent → verify OTP → enter portal. Language selector for 22 Indian languages.
+
+MY DATA: Shows all personal data the org holds about this person. Table: Data Type | Where Stored (source name) | Collected On | Purpose | Consent Status. Download "My Data Report" PDF.
+
+REQUEST: Form to submit rights request: type (Access/Correction/Erasure) | description | submit. Track existing request status.
+
+GRIEVANCE: File complaint. Category | description | reference number | upload evidence. Track status.
+
+CONSENT MANAGER: List all consents given. Purpose | data types | given date | expires | status | "Withdraw" button per consent.
+
+NOMINEE: Register nominee. Form: name, email, phone, relationship, upload authorization document.
+
+─────────────────────────────────────
+SETTINGS PAGES (/settings/*)
+─────────────────────────────────────
+
+USERS: Team table + invite form + role permissions matrix + pending invites.
+
+CLASSIFIERS: Built-in patterns (read-only). Custom patterns section: name + regex + sensitivity tier + test button. Add/edit/delete custom patterns. Risk weight sliders per PII type.
+
+INTEGRATIONS: Cards for each: Slack (webhook URL + channel) | Jira (URL + API key + project) | ServiceNow | SIEM/SOAR (generic webhook). Connect/disconnect + test + configure.
+
+RETENTION: Per data type retention rules: name + data category + retention period (days) + action on expiry (alert/archive). Add/edit/delete rules.
+
+NOTIFICATIONS: Routing matrix — event type vs channel (email/Slack/webhook) with toggles. Threshold settings.
+
+BRANDING: Upload org logo, primary accent color picker, portal custom domain, email from name.
+
+BILLING: Current plan info, usage meters for all limits, plan comparison with upgrade buttons, invoice history with PDF downloads.
+
+─────────────────────────────────────
+MONITORING (/monitoring)
+─────────────────────────────────────
+Service status cards: MongoDB (response time + connection count) | Redis (memory + keys) | AI Engine (response time) — each green/amber/red dot + metrics.
+
+Bull Queue status: scan queue | rights queue | report queue — waiting/active/completed/failed counts. "Clear Failed" button per queue.
+
+Request metrics: requests/minute chart, error rate chart, response time chart.
+
+─────────────────────────────────────
+ONBOARDING (/onboarding)
+─────────────────────────────────────
+New org setup wizard (auto-redirect first login if onboarding incomplete).
+
+Step 1: Confirm org profile.
+Step 2: Connect first data source (simplified wizard).
+Step 3: Run first scan (auto-start).
+Step 4: View results preview.
+Step 5: Invite team members.
+Step 6: Set up notifications.
+Step 7: Complete — links to dashboard + recommended next steps checklist.
+
+Progress saved in org settings. Can be dismissed and returned to.
+
+─────────────────────────────────────
+AUDIT LOG (/audit-log)
+─────────────────────────────────────
+Banner: "All entries are cryptographically hash-chained. Tampering is detectable." + "Verify Chain Integrity" button → calls GET /api/v1/audit/verify → shows pass/fail.
+
+Immutable table: Timestamp | User name+email | Role badge | Action JetBrains Mono | Resource type | Resource ID | IP Address | Outcome badge (SUCCESS green / FAILURE red) | Entry Hash (first 8 chars, full on hover).
+
+No update/delete buttons anywhere.
+
+─────────────────────────────────────
+PROFILE (/profile)
+─────────────────────────────────────
+Left: Profile card (avatar, name, email, role, org, member since). Edit profile form (name, phone, job title). Change password form.
+
+Right: 2FA card. Active sessions table (device/browser/IP/last active/current badge/revoke). Notification preferences. Activity log last 10 entries.
+
+─────────────────────────────────────
+WEBHOOKS (/webhooks)
+─────────────────────────────────────
+Webhooks table: URL | Events subscribed tags | Last Delivery | Last Status | Failure Count | Status toggle | Actions.
+
+"Add Webhook" modal: HTTPS URL + event subscriptions (scan.started/scan.completed/pii.critical_found/alert.critical/breach.detected/compliance.score_changed) + secret token (for HMAC) + Save.
+
+Delivery log per webhook: timestamp / event type / response status / response time / retry count / payload expandable.
+
+═══════════════════════════════════════════════════════════════════════
+PART 8: LANDING PAGE — EVERY SECTION PRECISELY
+═══════════════════════════════════════════════════════════════════════
+
+NAVBAR (LandingNav.jsx):
+Position fixed top 0, z-index 100. Default: transparent. After 50px scroll: bg rgba(7,9,15,0.95) backdrop-blur 20px, border-bottom var(--border), transition 300ms.
+Left: "DataSentinel" Syne 16px 800 color var(--c1) with small pulsing dot.
+Center: DM Sans 14px nav links — Features | Pricing | DPDPA | Blog | About. Hover color c1.
+Right: language toggle EN/HI + "Sign In" ghost + "Start Free Trial" primary cyan button.
+Mobile: hamburger → full-screen overlay with all links stacked and close button.
+
+HERO (Hero.jsx):
+Min-height 100vh, flex column centered. Background dot grid.
+Eyebrow: pulsing green dot + JetBrains Mono 11px uppercase "DPDPA 2023 Compliance Platform" color c4.
+H1: Syne clamp(48px,7vw,96px) 800. "Know Your Data. Stay DPDPA Compliant." color var(--text) with "DPDPA Compliant" in var(--c1). Animate fade+slide up.
+Subheading: DM Sans 18px muted max-width 560px. "DataSentinel continuously scans your databases, emails, files and cloud storage — finding Aadhaar, PAN, health data and all personal information across 22 Indian languages."
+CTA row: "Start Free Trial" primary large + "Watch Demo" secondary with play icon. Gap 16px.
+Stats grid: 6 cells in bg-s1 rounded panel — "50+" Indian Classifiers | "22" Languages | "₹250Cr" Max Penalty | "9" AI Models | "20+" Connectors | "72hrs" Breach SLA.
+3D EFFECT: Hero card mockup of dashboard shown below stats with CSS perspective transform: perspective(1000px) rotateX(8deg) rotateY(-5deg), layered box-shadows creating floating depth effect. Subtle hover removes tilt: transition transform 600ms ease.
+
+TRUST BADGES: "Trusted by compliance teams across India" centered + row of 5 org name pills in bg-s1.
+
+PROBLEM STATEMENT (ProblemStatement.jsx):
+Heading "Most organizations are flying blind on personal data" Syne 40px.
+grid3 cards with c3 top bars: "You Don't Know What You Hold" / "Manual Audits Take Months" / "DPDPA Violations Cost Crores."
+Each: icon in colored circle + title Syne 16px + description DM Sans 14px muted.
+
+HOW IT WORKS (HowItWorks.jsx):
+3-step flow: Connect → Scan & Classify → Comply.
+Step numbers Syne 48px very muted + icon + title + description. Arrow connectors between.
+
+FEATURES (Features.jsx):
+10 feature cards in auto-grid. Each: colored top bar + JetBrains Mono tag (01–10) + Syne title + DM Sans description + pill tags.
+Feature 1: Universal Discovery (c1)
+Feature 2: Indian PII Classifier (c5) — detects Aadhaar, PAN, GSTIN, UPI, Voter ID, Passport, Driving License
+Feature 3: 22-Language NLP (c7)
+Feature 4: Risk Intelligence (c3)
+Feature 5: Consent Lineage (c4)
+Feature 6: Breach Radar (c3) — 72-hour DPB notification tracking
+Feature 7: Rights Fulfillment (c2) — access, correction, erasure
+Feature 8: Compliance Cockpit (c1) — DPDPA chapter-by-chapter score
+Feature 9: Auto-Remediation Policies (c6)
+Feature 10: DPO Co-Pilot AI (c2)
+
+PII DEMO (PIIDemo.jsx):
+Working interactive demo. grid2: left textarea input + Detect button. Right results panel.
+Calls POST /api/v1/public/detect (rate limited 5/hour per IP).
+Results: original text with PII highlighted and colored by type overlays. Below: detection table with DataTypeTag + masked value + confidence + language detected.
+Loading spinner on button. Error message if AI engine down.
+3D EFFECT: result panel has subtle CSS 3D transform showing depth, border glow on active detection.
+
+DPDPA MAP (DPDPAMap.jsx):
+Compliance coverage table:
+§4-5: Lawful processing → Consent Intelligence
+§6: Notice & consent → Consent-to-Data lineage
+§8(1-5): Security obligations → Risk scoring + breach radar
+§8(7): Data erasure → Retention timer + deletion
+§9: Children's data → Under-18 classifier
+§10: SDF obligations → SDF readiness + DPIA
+§11-14: Data Principal rights → Rights Fulfillment Engine + portal
+Rule 6: Breach reporting → Breach Radar + auto-notification
+Rule 13: Data localization → Cross-border transfer detection
+Each row: DPDPA reference JetBrains Mono c8 | obligation | DataSentinel module | status dot (green=covered, amber=partial).
+
+PRICING (Pricing.jsx):
+Monthly/Annual toggle with 20% discount. Three plan cards:
+STARTER ₹4,999/mo (₹3,999 annual): 5 sources, 10 scans/month, 10K assets, 2 users.
+PROFESSIONAL ₹14,999/mo (₹11,999 annual): POPULAR badge, cyan top bar, 25 sources, unlimited scans, 500K assets, 10 users, all reports + DPIA + RoPA, consent manager, rights portal, DPO Co-Pilot.
+ENTERPRISE: custom pricing, unlimited, dedicated DPO support, on-premise option, SLA, custom connectors, white-label.
+Feature comparison table below (collapsible).
+
+TESTIMONIALS: 3 testimonial cards. Realistic Indian names and roles — "Chief Compliance Officer", "DPO IndiaMart", "CISO TCS".
+
+FAQ (FAQ.jsx): Accordion, 10 Q&As covering DPDPA basics, Indian PII detection, data residency, languages, pricing, getting started, SDF requirements, portal, breach detection, DPIA.
+
+CTA BANNER: "Start your DPDPA compliance journey today" + email input + "Get Early Access" → POST /api/v1/public/waitlist.
+
+FOOTER (LandingFooter.jsx): 4 columns (Product/Company/Legal/Resources) + social links + "Made in India 🇮🇳" + copyright.
+
+═══════════════════════════════════════════════════════════════════════
+PART 9: AUTH PAGES — COMPLETE IMPLEMENTATION
+═══════════════════════════════════════════════════════════════════════
+
+AUTH LAYOUT: Full screen. Left half: decorative panel (bg s2, border-right var(--border)) — logo + animated scanning visualization (CSS animation of text being scanned line by line with cyan highlight) + 3 feature pills + Indian client testimonial quote. Right half: card bg-s2 border var(--border) border-radius 8px padding 40px. Hidden on mobile.
+
+LOGIN: Email + password (show/hide toggle) + Remember me + Forgot password link. Google SSO + Microsoft SSO buttons. Submit shows spinner. If user has MFA: redirect to /auth/mfa-challenge with temp token. Error: red inline message.
+
+REGISTER: 4-step StepWizard.
+Step 1: Name, email, password (strength meter 4 bars grey→c3→c5→c1), confirm password.
+Step 2: Org name, industry, size, GSTIN optional, DPO email optional.
+Step 3: Plan selection (3 cards — Starter, Professional, Enterprise).
+Step 4: Email verification sent screen.
+Registration calls POST /api/v1/auth/register → creates org + REDACTED_ADMIN_USER user → sends verification email.
+
+MFA SETUP (/mfa-setup): QR code image (qrcode library). Manual entry code. 6-digit TOTP input verification. Backup codes list (downloadable). Enable button.
+
+MFA CHALLENGE (/auth/mfa-challenge): "Enter your 6-digit authentication code." Single 6-digit input. Verify button. "Use backup code" link.
+
+SSO CALLBACK (/auth/sso-callback): Spinner + "Completing sign-in...". Exchanges OAuth code for JWT. Redirects to /dashboard or /onboarding.
+
+FORGOT PASSWORD: Single email field → "Send Reset Link" → success state with resend countdown 60s.
+
+RESET PASSWORD: Validates token on mount. New Password + Confirm + strength meter. "Reset Password" button. Success: green check + auto-redirect to login in 3s.
+
+VERIFY EMAIL: Auto-calls verify endpoint on mount. Loading spinner → Success state (green check, "Go to Dashboard") or Error state (invalid/expired, "Request new link").
+
+ACCEPT INVITE: Shows inviter name + org. Name + password fields. Submit activates account → redirect to dashboard.
+
+═══════════════════════════════════════════════════════════════════════
+PART 10: BACKEND IMPLEMENTATION DETAILS
+═══════════════════════════════════════════════════════════════════════
+
+server.js:
+HTTP server + socket.io init + MongoDB connect + Redis connect + Bull queue init + cron start + listen PORT. Graceful shutdown handling.
+
+app.js:
+Express setup → Helmet → express-mongo-sanitize → hpp → CORS (frontend URL) → JSON body → URL-encoded → Winston request logging → Passport.js init → all routes mounted → 404 handler → global error handler last.
+
+encryptionService.js:
+encrypt(text) → AES-256-CBC using ENCRYPTION_KEY from env → returns "iv:encrypted" base64 string.
+decrypt(encryptedText) → decrypts → returns plaintext.
+hashValue(text) → SHA-256 hex (for PII values — never store plain PII).
+
+auditLogger.js middleware:
+For every mutating request (POST/PATCH/DELETE) → reads previous audit log entry → computes prevHash → computes entryHash of current action data → inserts AuditLog entry.
+Immutable by design — no update or delete routes for audit_logs ever exist.
+
+socketService.js:
+socket.io with JWT auth handshake middleware.
+Rooms per org: org:{orgId}.
+Events: scan:started, scan:progress (every 2s), scan:finding (each PII found), scan:complete, breach:alert, rights:update, policy:triggered.
+Bull workers publish to Redis channel → socket.io server subscribes and forwards.
+
+scanService.js + scanWorker.js (Bull):
+Bull job processes scan queue.
+For each data source: establish connection using decrypted credentials.
+Iterate files/records in chunks.
+For each chunk: POST to AI engine /detect → receive findings array.
+For each finding: hash value (SHA-256), encrypt sourcePath (AES), create PIIFinding document, create/update DataAsset, calculate risk score via riskScoringService, check alert rules via alertService, check policy triggers, emit socket events.
+Update ScanJob progress every 100 files.
+On complete: store summary in ScanJob.insightSummary.
+
+rightsFulfillmentService.js + rightsWorker.js:
+ACCESS request: queries each source for principalId, returns data summary.
+ERASURE request: deletes/anonymizes from each source. Records result in fulfillmentLog.
+CORRECTION request: updates data in each source.
+30-day SLA cron: node-cron checks overdue requests daily, creates alert.
+
+reportService.js:
+generateReport(type, params, orgId) → builds full report JSON → uses pdfkit to generate real PDF binary → saves to /uploads/reports/ directory → updates Report record with fileUrl and status "ready".
+
+emailService.js:
+nodemailer with SMTP config. HTML templates inline-styled dark theme DataSentinel branded.
+Sends: welcome, verification, password reset, team invite, critical alert, scan complete, weekly compliance digest, breach 72hr warning, consent expiry warning.
+
+schedulerService.js node-cron jobs:
+Every 15 min: health check all connectors → update healthStatus
+Daily 2 AM: check retention policy violations → create alerts
+Daily 3 AM: check consent records expiring in 30 days → create alerts
+Daily 4 AM: check rights requests past 30-day SLA → create alerts
+Weekly Sunday: update org compliance score
+
+All controllers: try-catch with next(error), authorization check via rbac middleware, consistent response via responseUtils: { success: true/false, data: {}, message: '', pagination: {} }
+
+═══════════════════════════════════════════════════════════════════════
+PART 11: AI ENGINE — COMPLETE IMPLEMENTATION
+═══════════════════════════════════════════════════════════════════════
+
+main.py:
+FastAPI app. CORS configured for backend origin. Mount all routers. Startup event loads spaCy model + initializes Presidio analyzer.
+
+indian_pii_regex.py — ALL patterns compiled at module load:
+AADHAAR: r'\b[2-9]{1}[0-9]{3}\s?[0-9]{4}\s?[0-9]{4}\b'
+AADHAAR_MASKED: r'\bXXXX\s?XXXX\s?[0-9]{4}\b'
+PAN: r'\b[A-Z]{5}[0-9]{4}[A-Z]{1}\b'
+MOBILE: r'(?<!\d)[6-9][0-9]{9}(?!\d)'
+VOTER_ID: r'\b[A-Z]{3}[0-9]{7}\b'
+PASSPORT: r'\b[A-PR-WYa-pr-wy][1-9]\d\s?\d{4}[1-9]\b'
+IFSC: r'\b[A-Z]{4}0[A-Z0-9]{6}\b'
+UPI: r'\b[\w\.\-]+@(oksbi|okaxis|okicici|okhdfcbank|ybl|ibl|axl|paytm|apl|upi)\b'
+PIN_CODE: r'\b[1-9][0-9]{5}\b' (with context check)
+GSTIN: r'\b[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}\b'
+CIN: r'\b[LU][0-9]{5}[A-Z]{2}[0-9]{4}[A-Z]{3}[0-9]{6}\b'
+TAN: r'\b[A-Z]{4}[0-9]{5}[A-Z]{1}\b'
+DRIVING_LICENSE: r'\b[A-Z]{2}[0-9]{2}[- ][0-9]{4}[0-9]{7}\b'
+EMAIL: r'\b[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Z|a-z]{2,7}\b'
+DOB: r'\b(0?[1-9]|[12][0-9]|3[01])[\/\-\.](0?[1-9]|1[012])[\/\-\.](19|20)\d\d\b'
+CREDIT_CARD: Luhn-validated 16-digit groups
+
+pii_detector.py:
+detect(text, source_type) function:
+Stage 1: Run all regex patterns, collect matches with start/end positions
+Stage 2: Run Presidio analyzer on text for global PII
+Stage 3: Run spaCy NER for PERSON/ORG/GPE/LOC entities
+Stage 4: Merge results, deduplicate overlapping matches (keep highest confidence)
+Stage 5: Mask detected values (show only last 4 chars for most)
+Return list of Detection objects: {pii_type, masked_value, confidence, start, end, language}
+
+sensitivity_scorer.py:
+TYPE_WEIGHTS dict:
+AADHAAR=100, BIOMETRIC=100, HEALTH=95, CASTE_RELIGION=95, SEXUAL_ORIENTATION=95, PAN=90, CREDIT_CARD=88, BANK_ACCOUNT=85, FINANCIAL=82, PASSPORT=82, VOTER_ID=78, DRIVING_LICENSE=75, GSTIN=60, MOBILE+NAME_COMBO=72, EMAIL+NAME_COMBO=65, ADDRESS=55, DOB=60, EMAIL=42, MOBILE=52, NAME=35, PIN_CODE=25
+
+Context multipliers (additive, max 100):
+unencrypted=+20, internet_exposed=+30, no_consent=+25, retention_expired=+15, bulk_storage=+10, children_data=+20, cross_border_transfer=+15
+
+map_to_sensitivity(score): CRITICAL ≥80, HIGH ≥60, MEDIUM ≥40, LOW below 40
+map_to_tier(score): Tier 5 ≥90, Tier 4 ≥70, Tier 3 ≥50, Tier 2 ≥30, Tier 1 below 30
+
+ocr_service.py:
+extract_text(file_bytes, mime_type):
+If PDF: use Pillow to convert pages to images → pytesseract with language packs (hin, tam, tel, kan, ben, mar, guj for Indic scripts)
+If image: pytesseract directly
+Return {text, page_count, confidence, extraction_method}
+
+schemas.py (Pydantic models):
+DetectRequest: text (str), source_type (str), language_hint (Optional[str])
+Detection: pii_type, masked_value, confidence (float 0-1), start (int), end (int), language
+DetectResponse: detections (List[Detection]), total_found (int), processing_time_ms (int)
+ClassifyRequest: detections (List[Detection]), context (dict)
+ClassifyResponse: sensitivity_level, risk_score (int 0-100), tier (int 1-5), recommendations (List[str])
+OCRRequest: (multipart file)
+OCRResponse: text (str), page_count (int), confidence (float), extraction_method (str)
+
+API endpoints:
+POST /detect → DetectRequest → DetectResponse
+POST /classify → ClassifyRequest → ClassifyResponse
+POST /ocr → multipart file → OCRResponse
+POST /batch-detect → List[{id, text}] → keyed DetectResponse results
+GET /health → {status: "ok", models_loaded: bool, spacy_loaded: bool}
+
+═══════════════════════════════════════════════════════════════════════
+PART 12: INFRASTRUCTURE FILES
+═══════════════════════════════════════════════════════════════════════
+
+docker-compose.yml services:
+frontend: build ./frontend, port 5173:5173, volumes src hot reload, env_file
+backend: build ./backend, port 3000:3000, depends mongodb redis ai-engine, volumes src hot reload, env_file
+ai-engine: build ./ai-engine, port 8000:8000, env_file
+mongodb: mongo:7, port 27017:27017, volume datasentinel_mongo:/data/db, env MONGO_INITDB_DATABASE=datasentinel
+redis: redis:7-alpine, port 6379:6379, volume datasentinel_redis:/data, command redis-server --appendonly yes
+nginx: nginx:alpine, port 80:80, volumes ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+mongo-express: mongo-express, port 8081:8081, depends mongodb (dev only)
+All services in same network: datasentinel-network. Health checks on all. restart: unless-stopped.
+
+nginx/nginx.conf:
+upstream frontend { server frontend:5173 }
+upstream backend { server backend:3000 }
+upstream ai_engine { server ai-engine:8000 }
+server port 80:
+location / → proxy_pass frontend with WebSocket headers (proxy_http_version 1.1, Upgrade $http_upgrade, Connection "upgrade")
+location /api/ → proxy_pass backend
+location /socket.io/ → proxy_pass backend with WebSocket upgrade headers
+
+Backend Dockerfile:
+FROM node:20-alpine, WORKDIR /app, COPY package.json, RUN npm ci, COPY . ., CMD ["node", "server.js"]
+
+Frontend Dockerfile:
+FROM node:20-alpine, WORKDIR /app, COPY package.json, RUN npm ci, COPY . ., EXPOSE 5173, CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"]
+
+AI Engine Dockerfile:
+FROM python:3.11-slim, WORKDIR /app, COPY requirements.txt, RUN pip install --no-cache-dir -r requirements.txt && python -m spacy download en_core_web_sm, COPY . ., CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+
+.github/workflows/ci.yml:
+Triggers on push to main. Steps: checkout, setup Node 20, npm ci (backend + frontend), ESLint both, if pass: success notification.
+
+README.md must include:
+Project overview + competitive advantage
+ASCII architecture diagram showing all services
+Page sitemap organized by section
+Setup instructions (Docker: 3 commands + manual setup)
+All environment variables documented
+API endpoints organized by domain
+MongoDB collections list
+AI models + detection patterns documented
+5-minute demo strategy
+
+═══════════════════════════════════════════════════════════════════════
+PART 13: ENVIRONMENT FILES — COMPLETE
+═══════════════════════════════════════════════════════════════════════
+
+Backend .env.example:
+NODE_ENV=development
+PORT=3000
+MONGODB_URI=mongodb://mongodb:27017/datasentinel
+REDIS_URL=redis://redis:6379
+JWT_SECRET=minimum-32-character-secret-here-replace-me
+JWT_EXPIRES_IN=15m
+JWT_REFRESH_EXPIRES_IN=7d
+ENCRYPTION_KEY=exactly-32-character-key-here-now
+AI_ENGINE_URL=http://ai-engine:8000
+FRONTEND_URL=http://localhost:5173
+PORTAL_URL=http://localhost:5173/portal
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_SECURE=false
+SMTP_USER=your-email@gmail.com
+SMTP_PASS=your-gmail-app-password
+FROM_EMAIL=noreply@datasentinel.in
+FROM_NAME=DataSentinel
+GOOGLE_CLIENT_ID=your-google-client-id
+GOOGLE_CLIENT_SECRET=your-google-client-secret
+MICROSOFT_CLIENT_ID=your-microsoft-client-id
+MICROSOFT_CLIENT_SECRET=your-microsoft-client-secret
+AWS_ACCESS_KEY_ID=optional-for-s3-reports
+AWS_SECRET_ACCESS_KEY=optional
+AWS_REGION=ap-south-1
+AWS_S3_BUCKET=datasentinel-reports
+
+Frontend .env.example:
+VITE_API_URL=http://localhost/api/v1
+VITE_SOCKET_URL=http://localhost
+VITE_APP_NAME=DataSentinel
+VITE_APP_ENV=development
+
+AI Engine .env.example:
+HOST=0.0.0.0
+PORT=8000
+LOG_LEVEL=info
+BACKEND_URL=http://backend:3000
+
+═══════════════════════════════════════════════════════════════════════
+PART 14: NON-NEGOTIABLE RULES — ALL MUST BE FOLLOWED
+═══════════════════════════════════════════════════════════════════════
+
+1. ZERO TypeScript. Every file is .js or .jsx. No type annotations, no .ts, no .tsx anywhere.
+2. ZERO demo, mock, seed, or hardcoded data anywhere in the codebase.
+3. ZERO placeholder functions. Every function has a complete working implementation.
+4. ZERO TODO or FIXME comments. If something is referenced it is built.
+5. Every API route has JWT authentication middleware except explicitly listed public and portal routes.
+6. Every form has React Hook Form + Zod validation (frontend) + express-validator (backend) with specific inline error messages under each failing field with red border on the field.
+7. Every data table has working server-side pagination, column sorting, and filter parameters sent to API.
+8. Every chart loads real data from API endpoint with skeleton loading state while fetching.
+9. Every protected page redirects to /login with saved return URL if not authenticated (Zustand authStore check).
+10. Socket.io real-time events must update Dashboard live feed and Scans progress without page refresh.
+11. The PII detection demo on the landing page calls the real AI engine endpoint (rate limited 5/hour per IP).
+12. PDF report generation via pdfkit must produce downloadable PDFs with real formatted content.
+13. Email templates via nodemailer must be complete HTML with inline CSS that renders in email clients.
+14. RBAC enforced at every route: viewer cannot POST/PATCH/DELETE. Analyst cannot change settings. DPO role has specific compliance routes. Portal users only access /portal/* routes. Return 403 with clear message.
+15. Audit log middleware writes to MongoDB AuditLog collection for every state-changing action with hash chain.
+16. Audit logs are immutable — no update or delete routes exist for audit_logs collection.
+17. All passwords hashed bcrypt rounds 12. Never stored plain. Never returned in API responses (use .select('-passwordHash') on all user queries).
+18. All DataSource credentials encrypted with AES-256-CBC before MongoDB storage.
+19. PII values stored as SHA-256 hashes only in pii_findings. Source paths AES-256-CBC encrypted. No plain PII ever touches the database.
+20. Socket.io uses JWT auth handshake middleware — clients must pass valid JWT to connect.
+21. The 3D design effects (CSS perspective transforms, layered box-shadows, glassmorphism) applied on landing hero, stat cards, and key dashboard elements.
+22. The dark industrial design system from Part 4 applied consistently on every single page without exception.
+23. Mobile responsive at 768px breakpoint minimum on all public, auth, and portal pages.
+24. All public pages use LandingNav and LandingFooter components.
+25. All app pages use AppLayout with Sidebar and TopBar.
+26. Framer Motion page transitions (opacity 0→1, y 20→0, 0.3s) applied on all app pages. Card stagger delays.
+27. All API responses follow exactly: { success: true/false, data: {}, message: '', pagination: {} } format.
+28. Hash chain verification endpoint must actually re-compute hashes and compare to verify audit log integrity.
+29. Children's data (isChildrenData flag) propagates through: AI detection → pii_findings → data_assets → inventory UI → children-data page.
+30. D3.js lineage graph on /lineage must render real relationship data from inventory.
+31. Bull job queues for scan and rights must have dedicated worker files that process jobs independently.
+32. i18next configured with EN + HI minimum — language switcher in topbar and portal landing works.
+33. Error boundaries in React prevent full page crashes — wrap main routes in ErrorBoundary component.
+34. Complete README.md with ASCII architecture diagram, setup instructions (clone → .env → docker compose up → access app), all env vars documented.
+35. BUILD EVERY FILE COMPLETELY. Output every file with full content. Start with README → docker-compose → nginx.conf → backend (package.json → server.js → app.js → config → models → middleware → services → workers → controllers → routes) → AI engine (requirements.txt → main.py → all service files → all routers → schemas.py) → frontend (package.json → index.html → vite.config.js → index.css → i18n → main.jsx → App.jsx → stores → hooks → lib → all UI components → all landing components → all pages in order). Write every file completely. Do not summarize. Do not truncate. Do not write "similar to above" or "see previous implementation." Every file gets its full content written out.
+
+═══════════════════════════════════════════════════════════════════════
+START BUILDING NOW
+═══════════════════════════════════════════════════════════════════════
+
+Output files in this exact order:
+1. README.md (complete with ASCII diagram, setup, all docs)
+2. docker-compose.yml
+3. nginx/nginx.conf
+4. backend/package.json
+5. backend/.env.example
+6. backend/server.js
+7. backend/app.js
+8. backend/src/config/db.js
+9. backend/src/config/redis.js
+10. backend/src/config/logger.js
+11. backend/src/config/bullQueues.js
+12. backend/src/config/passport.js
+13. backend/src/models/ [all 20 model files]
+14. backend/src/middleware/ [all 6 middleware files]
+15. backend/src/utils/ [all 3 util files]
+16. backend/src/services/ [all 11 service files]
+17. backend/src/workers/ [scanWorker.js + rightsWorker.js]
+18. backend/src/controllers/ [all 24 controller files]
+19. backend/src/routes/ [all 26 route files]
+20. backend/Dockerfile
+21. ai-engine/requirements.txt
+22. ai-engine/.env.example
+23. ai-engine/main.py
+24. ai-engine/app/models/schemas.py
+25. ai-engine/app/services/ [all 5 service files]
+26. ai-engine/app/routers/ [all 5 router files]
+27. ai-engine/Dockerfile
+28. frontend/package.json
+29. frontend/.env.example
+30. frontend/index.html
+31. frontend/vite.config.js
+32. frontend/tailwind.config.js
+33. frontend/postcss.config.js
+34. frontend/src/index.css
+35. frontend/src/i18n/ [index.js + en.json + hi.json]
+36. frontend/src/main.jsx
+37. frontend/src/App.jsx
+38. frontend/src/store/ [all 4 store files]
+39. frontend/src/hooks/ [all 6 hook files]
+40. frontend/src/lib/ [all 4 lib files]
+41. frontend/src/components/ui/ [all 19 UI components]
+42. frontend/src/components/charts/ [all 7 chart components]
+43. frontend/src/components/layout/ [all 5 layout components]
+44. frontend/src/components/landing/ [all 13 landing components]
+45. frontend/src/components/copilot/ [all 3 copilot components]
+46. frontend/src/components/portal/ [all 2 portal components]
+47. frontend/src/pages/public/ [all 15 public pages]
+48. frontend/src/pages/auth/ [all 9 auth pages]
+49. frontend/src/pages/app/ [all 47 app pages]
+50. frontend/src/pages/portal/ [all 6 portal pages]
+51. frontend/Dockerfile
+52. .github/workflows/ci.yml
+53. .github/workflows/deploy.yml
+
+Write every single file completely. No truncation. No placeholders. No summaries.
+
+
+check any mock data and real timeBuild a full stack web application called "DataSentinel" - an Indian PII Data Discovery 
+and DPDPA Compliance Platform. NO MOCK DATA ANYWHERE. Everything must be real and functional.
+
+TECH STACK:
+- React + Tailwind CSS + shadcn/ui frontend
+- Python FastAPI backend
+- SQLite for storing scan results, users, settings locally
+- Run locally: npm run dev (frontend) + uvicorn main:app (backend)
+
+INSTALL THESE BACKEND LIBRARIES:
+pip install fastapi uvicorn python-multipart sqlalchemy
+pip install presidio-analyzer presidio-anonymizer
+pip install spacy && python -m spacy download en_core_web_lg
+pip install pdfplumber python-docx pytesseract pillow
+pip install pandas openpyxl scikit-learn numpy
+pip install transformers torch
+pip install pymysql psycopg2-binary pymongo
+pip install boto3 google-api-python-client google-auth-oauthlib
+pip install reportlab mailbox gitpython
+pip install passlib[bcrypt] python-jose[cryptography]
+
+DATABASE SCHEMA (SQLite via SQLAlchemy):
+Tables:
+- users (id, name, email, password_hash, company_name, role, created_at)
+- sources (id, user_id, name, type, config_json, created_at, last_scanned)
+- scans (id, source_id, user_id, status, started_at, completed_at, total_findings)
+- findings (id, scan_id, pii_type, masked_value, location, risk_level, risk_score, 
+            context, confidence, person_nearby, remediation, reviewed, created_at)
+- settings (id, user_id, company_name, notification_email, scan_schedule, 
+            retention_days, updated_at)
+- reports (id, user_id, scan_ids, generated_at, compliance_score, report_json)
+
+AUTHENTICATION:
+- Register page: name, email, password, company name
+- Login page: email, password
+- JWT token auth, stored in localStorage
+- Logout button in sidebar clears token and redirects to login
+- All API routes protected by JWT middleware
+- User can only see their own scans, sources, findings
+
+SETTINGS PAGE (fully editable, saves to database):
+- Company name (editable, saves to DB)
+- User full name (editable)
+- Email (editable)
+- Password change (old password, new password, confirm)
+- Notification email for alerts
+- Scan schedule (manual / daily / weekly)
+- Data retention period (30/60/90/180 days)
+- Delete account option
+- All changes save via API to SQLite database
+- Show success toast on save
+
+SIDEBAR NAVIGATION:
+- Logo + "DataSentinel" text
+- Dashboard
+- Scan Sources
+- Add Source
+- Findings
+- Reports
+- Settings
+- Bottom: user avatar + name + company + Logout button
+- Logout clears JWT and goes to login page
+
+=== SCAN SOURCES PAGE ===
+- List all sources the user has added (from database)
+- Each source card shows: source name, type icon, date added, last scanned, total findings
+- DELETE button on each source card:
+  * Confirms deletion with modal "Delete this source? All associated scans and findings will also be deleted."
+  * Deletes source + all its scans + all its findings from database
+  * Shows toast "Source deleted successfully"
+- SCAN NOW button on each source card triggers new scan
+- Empty state: "No sources added yet. Click Add Source to get started."
+
+=== ADD SOURCE PAGE ===
+Six source type cards. Click any to open a configuration form.
+Each form has a DELETE/CANCEL button and SAVE SOURCE button.
+All saved sources appear in Scan Sources page.
+
+A) FILE SCANNER
+Form fields:
+- Source Name (text input, e.g. "HR Documents Folder")
+- Upload files (drag and drop, multi-file, accepts CSV, PDF, DOCX, TXT, ZIP, JPG, PNG, XLSX)
+- Save Source button
+
+On SCAN:
+Backend real implementation:
+- CSV/XLSX: pandas read, scan all string columns with Presidio
+- PDF: pdfplumber extract text, run Presidio
+- DOCX: python-docx extract text, run Presidio  
+- TXT: direct Presidio scan
+- JPG/PNG: pytesseract OCR then Presidio
+- ZIP: extract all files, scan each one based on extension
+- spaCy NER runs on all text to find PERSON names near PII
+- Every real finding saved to findings table in SQLite
+- Risk scoring based on PII type + context
+
+B) DATABASE SCANNER
+Form fields:
+- Source Name
+- Database Type (MySQL / PostgreSQL / MongoDB)
+- Host
+- Port
+- Database Name
+- Username
+- Password
+- Save Source button
+
+On SCAN:
+Backend real implementation:
+- Actually connect using pymysql / psycopg2 / pymongo
+- Get list of all tables/collections
+- For each table: SELECT * LIMIT 1000
+- Run Presidio on all string/text columns
+- Run IsolationForest on numeric columns to detect Aadhaar/phone number patterns
+- Save real findings with table name + column name + row sample (masked) to SQLite
+- If connection fails: return specific error message (wrong password, host unreachable etc)
+- Never show fake data if connection fails, show the real error
+
+C) EMAIL SCANNER
+Form fields:
+- Source Name
+- Scan Type: toggle between "Upload .mbox file" OR "IMAP Connection"
+- If .mbox: file upload input
+- If IMAP: Host, Port, Username, Password, Use SSL toggle
+- Save Source button
+
+On SCAN:
+Backend real implementation:
+- .mbox: Python mailbox library parses every email, extract body + text attachments, run Presidio
+- IMAP: imaplib connect, fetch emails from INBOX, run Presidio on each
+- Save findings with email subject + sender (masked) + date to SQLite
+- Real errors shown if connection fails
+
+D) SOURCE CODE SCANNER
+Form fields:
+- Source Name
+- Upload ZIP of codebase
+- File extensions to scan (default: .py .js .ts .java .env .config .json .yaml .php .rb .go)
+- Save Source button
+
+On SCAN:
+Backend real implementation:
+- Extract ZIP to temp folder
+- Walk all files matching selected extensions
+- For each file: run Presidio line by line
+- Save findings with: filename, line number, PII type, masked value, surrounding context (2 lines before/after, PII masked)
+- .env and config files automatically flagged HIGH risk
+- Delete temp folder after scan
+
+E) GOOGLE DRIVE SCANNER
+Form fields:
+- Source Name
+- credentials.json upload (from Google Cloud Console)
+- Folder ID or "Scan entire Drive"
+- Save Source button
+
+On SCAN:
+Backend real implementation:
+- Use google-api-python-client with uploaded credentials
+- List all files in specified folder
+- Download text files, export Google Docs as plain text
+- Run Presidio on each file's content
+- Save real findings to SQLite
+- Include setup instructions in UI: "How to get credentials.json from Google Cloud Console"
+
+F) AWS S3 SCANNER
+Form fields:
+- Source Name
+- AWS Access Key ID
+- AWS Secret Access Key
+- Region
+- Bucket Name
+- Prefix/Folder (optional)
+- Save Source button
+
+On SCAN:
+Backend real implementation:
+- boto3 connect with provided credentials
+- List all objects in bucket/prefix
+- Download each file to temp
+- Run appropriate scanner based on file extension (same as file scanner)
+- Save real findings to SQLite
+- Delete temp files after scan
+- Real AWS errors shown (invalid credentials, no access, bucket not found)
+
+=== FINDINGS PAGE ===
+- Load all findings from SQLite for logged-in user
+- If no findings yet: empty state "No findings yet. Add a source and run a scan."
+- Filter bar: PII Type dropdown, Source dropdown, Risk Level dropdown, Date range picker, Search box
+- Findings table columns:
+  * PII Type (icon + label)
+  * Masked Value (e.g. XXXX-XXXX-4821)
+  * Source Name
+  * Location (file path / table.column / email subject / line number)
+  * Risk Score (colored progress bar 0-100)
+  * Person Nearby (name if spaCy found one)
+  * Status (New / Reviewed)
+  * Actions
+- DELETE button on each row:
+  * Deletes that finding from SQLite
+  * Updates dashboard counts immediately
+- MARK REVIEWED button on each row
+- Click row to expand: full context, which recognizer caught it, confidence score, DPDPA clause, remediation steps
+- Bulk select + bulk delete
+- Export selected or all as CSV (real download)
+- Pagination: 25 per page
+
+=== DASHBOARD ===
+Load everything from SQLite. Show only real data.
+If no scans done yet: show empty states with "Run your first scan to see results here"
+Cards:
+- Total Sources Added (real count from sources table)
+- Total Scans Run (real count from scans table)
+- Total PII Findings (real count from findings table)
+- High Risk Items (real count where risk_level = HIGH)
+- Compliance Score (calculated from findings: 100 minus weighted penalty per finding)
+
+Charts (only show when data exists, otherwise empty state):
+- PII Type breakdown: bar chart from real findings grouped by pii_type
+- Risk level pie chart: from real findings
+- Scan history timeline: from real scans table
+- Top risky sources: from real findings grouped by source
+
+Recent Findings table: last 10 from findings table, real data only
+
+=== REPORTS PAGE ===
+- "Generate Report" button (only active if at least 1 scan exists)
+- If no scans: "Run at least one scan to generate a compliance report"
+- On generate: backend calculates from real SQLite data:
+  * Executive Summary (real counts and findings)
+  * Data Inventory Table (real PII types found, real counts, real locations)
+  * DPDPA 2023 Clause Mapping based on what was actually found:
+    - Section 4 (lawful processing): flags PII found without consent metadata
+    - Section 8 (data fiduciary obligations): lists all high risk findings
+    - Section 9 (children's data): flags if any minor-related data detected
+    - Section 16 (data retention): flags old undeleted findings over retention period
+  * Compliance Score with breakdown
+  * Remediation Roadmap: 30/60/90 day plan based on actual findings
+  * Risk Register: real findings sorted by risk score
+- Export as PDF (reportlab generates real downloadable PDF)
+- Export as CSV
+- List of previously generated reports with date + compliance score
+- DELETE button on each old report
+
+=== REAL PII DETECTION ENGINE (backend/scanner.py) ===
+
+Use Microsoft Presidio as PRIMARY engine with these custom Indian recognizers:
+
+from presidio_analyzer import AnalyzerEngine, Pattern, PatternRecognizer
+
+1. AadhaarRecognizer
+   Pattern: \b[2-9]{1}[0-9]{3}\s?[0-9]{4}\s?[0-9]{4}\b
+   Context: ["aadhaar", "aadhar", "uid", "uidai", "unique identification"]
+   Score: 0.85
+
+2. PANRecognizer  
+   Pattern: \b[A-Z]{5}[0-9]{4}[A-Z]{1}\b
+   Context: ["pan", "permanent account number", "income tax", "it department"]
+   Score: 0.85
+
+3. UPIRecognizer
+   Pattern: \b[a-zA-Z0-9.\-_]{2,256}@[a-zA-Z]{2,64}\b
+   Context: ["upi", "gpay", "phonepe", "paytm", "bhim", "payment"]
+   Score: 0.75
+
+4. IFSCRecognizer
+   Pattern: \b[A-Z]{4}0[A-Z0-9]{6}\b
+   Context: ["ifsc", "bank", "neft", "rtgs", "imps", "transfer"]
+   Score: 0.80
+
+5. IndianPhoneRecognizer
+   Pattern: \b[6-9][0-9]{9}\b
+   Context: ["phone", "mobile", "contact", "call", "whatsapp", "number"]
+   Score: 0.70
+
+6. VoterIDRecognizer
+   Pattern: \b[A-Z]{3}[0-9]{7}\b
+   Context: ["voter", "election", "epic", "electoral"]
+   Score: 0.80
+
+7. PassportRecognizer
+   Pattern: \b[A-Z]{1}[0-9]{7}\b
+   Context: ["passport", "travel document", "visa"]
+   Score: 0.80
+
+8. GSTRecognizer
+   Pattern: \b[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}\b
+   Context: ["gst", "gstin", "goods and services tax", "tax invoice"]
+   Score: 0.90
+
+9. BankAccountRecognizer
+   Pattern: \b[0-9]{9,18}\b
+   Context: ["account number", "bank account", "savings", "current account"]
+   Score: 0.75
+
+Also enable Presidio's built-in: EMAIL_ADDRESS, PHONE_NUMBER, PERSON, IN_PAN, IN_AADHAAR
+
+spaCy NER: run en_core_web_lg on same text, extract PERSON entities within 100 chars of any PII finding
+
+RISK SCORING (real algorithm):
+base_scores = {Aadhaar: 90, PAN: 90, BankAccount: 85, Passport: 85, 
+               VoterID: 80, GSTIN: 75, IFSC: 70, UPI: 70, Phone: 60, Email: 40}
+               
+modifiers:
++20 if person name found nearby
++15 if found in public/unencrypted location (S3 public bucket, unprotected DB)
++10 if found in source code or config file
++10 if multiple PII types in same document
+-10 if found in encrypted storage
+-5 if already marked as reviewed
+
+final_score = min(100, base_score + modifiers)
+risk_level = HIGH if >70, MEDIUM if 40-70, LOW if <40
+
+=== DESIGN ===
+- Dark sidebar: #0f172a with white text
+- Active nav item: #3b82f6 highlight
+- Main content: white/gray-50 background
+- HIGH risk: red (#ef4444), MEDIUM: amber (#f59e0b), LOW: green (#22c55e)
+- All cards have subtle shadows
+- Smooth page transitions
+- Loading spinners during scans
+- Real-time scan progress: "Extracting text... Running ML models... Scoring risks... Saving findings..."
+- Toast notifications for all actions (scan complete, source deleted, settings saved, error)
+- Empty states with helpful messages everywhere (no mock data to fill empty states)
+- Fully responsive
+
+=== IMPORTANT RULES ===
+1. NO MOCK DATA ANYWHERE — if something is empty, show a proper empty state UI
+2. ALL data comes from SQLite database
+3. ALL scans use real ML (Presidio + spaCy)
+4. ALL connections are real (database, S3, IMAP) with real error messages on failure
+5. DELETE works everywhere: sources, findings, reports
+6. Settings save to database and persist after refresh
+7. Logout clears session completely
+8. Dashboard shows only real scan results
+9. Reports generated only from real findings
+10. Every form validates inputs before saving
+
+Make this fully functional, production-quality, and impressive for hackathon judges. check all are real time implemented and ready integerate ai model correctly i need complete ai model should trained correct and make it real time no mock or demo data make it as correct check all or done and correctly
+check all and give me correctly without any mock and real time ai integerattion 
